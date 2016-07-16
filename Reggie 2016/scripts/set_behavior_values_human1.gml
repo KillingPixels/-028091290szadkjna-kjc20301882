@@ -27,7 +27,7 @@ Sets all behavior and combat variables for AI: Basic Primal
     //Combat:    
     _maxHealth=75+(argument0*5);   
     _moraleBase=0;
-    
+    _hideTime=600-(argument0*30)
     _hiddenTimerMax=900;                   //*How long to try before giving up if can't reach the player
     _fleeTimerMax=300 - (argument0 *15);  
     _viewRange=500 + ( argument0 * 15);    // How far away the player needs to be to start hunting
@@ -92,6 +92,8 @@ Sets all behavior and combat variables for AI: Basic Primal
  //Basic:
 
  _health=_maxHealth;
+ _pastHealth=_maxHealth // used to check if health has changed
+ _currentHideTime=_hideTime
  _armour=0;
 
  _aiState=AI_STATE.idle;
@@ -134,6 +136,7 @@ Sets all behavior and combat variables for AI: Basic Primal
  _randomGenCounter=0;
  _idleType=0;
  _bufSave="";
+ _aiStage=0;
 
 
 
