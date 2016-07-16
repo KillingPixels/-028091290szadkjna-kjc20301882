@@ -133,6 +133,8 @@ heart_initialise();
 //sev_initialise();
 
 NSP_initialize();
+TPP_initialize();
+TPP_define_local();
 
 //Blur shader setup:
 //globalvar sha_gauss_sigma,sha_gauss_blurSize;

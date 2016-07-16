@@ -35,18 +35,20 @@ with (bodyParObj) {
  }
  
 if ds_grid_height(__grid)=0
- return -1;
+ rv=-1;
  
-//Player bias:
-if irandom(100)<argument2 {
+else if irandom(100)<argument2 { //Player bias
+
  if ds_grid_value_exists(__grid,0,0,0,ds_grid_height(__grid)-1,global.player_obj_id)
-  return (global.player_obj_id).id;
+  rv=(global.player_obj_id).id;
+ 
  }
+ else {
  
-//Sort:
-ds_grid_sort(__grid,1,true);
- 
-rv=__grid[#0,0];
+  ds_grid_sort(__grid,1,true); 
+  rv=__grid[#0,0];
+  
+  }
 
 ds_grid_destroy(__grid);
 
