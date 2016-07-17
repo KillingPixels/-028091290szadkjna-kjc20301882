@@ -29,14 +29,13 @@
     
 >>To do:
 
+  Shift / stamina
   !!!Fix Mercury (light_create double list creation)
   Rewrite screen_shake
-  Textbox drawing issue
   ~Functions to start and end cutscenes, and to move the camera while in them.
   ~Slabs...
   Sound (sfx system)
   Inventory debuff
-  execute_delayed
   Load settings in game_init or after it
   
   -AI commands:
@@ -46,7 +45,7 @@
    -activating / deactivating
    -In AI parent objects, exchange some collision functions with simple collisions.
    
-  -Can't repair and similar while in combat (player_is_in_combat(...))
+  ~Can't repair and similar while in combat (player_is_in_combat())
   -Toolbox
   -Crafting/repairing benches/stations.
   ~Impact damage. (Add some particles)
