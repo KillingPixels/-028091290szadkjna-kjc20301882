@@ -58,8 +58,16 @@ _moveMode=0;
             <kind>1</kind>
             <string>///*Attack setup
 
+
 //Primary attack (Slam):
 primary_weapon_initialize("Rifle")
+
+//weapon list---------------------------
+primary_weapon_initialize("Rifle");
+secondary_weapon_initialize("BasicGranade");
+granadeNumber=2
+//------------------------------------------------------
+
 _prefDist=250; //prefered distance to player
 
 _enemyPrecision=90/skill
@@ -70,6 +78,10 @@ _enemyPrecision=90/skill
   //No secondary attack.
  
 //General:
+
+
+_granadeSpeed=1;
+
 _precisionState=1;
 _attackTimer=-_attackSpeed;
 _attackMode=0;
@@ -167,6 +179,10 @@ if _attackTimer&gt;-_attackSpeed
  {
     if(_pastHealth&gt;_health) and ((irandom_range(0,skill)=1))
         {
+
+
+        if(_granadeSpeed=0)_granadeSpeed=1;
+
         _scriptStep=0;
         _aiState=AI_STATE.hide;
         _pastHealth=_health;
@@ -266,11 +282,21 @@ if (_aiState=AI_STATE.ret) or (_aiState=AI_STATE.hide) _precisionState=2;
 
 if ((_aiState=AI_STATE.hunt) or (_aiState=AI_STATE.ret) or (_aiState=AI_STATE.hide)) begin
 
- if _attackTimer&gt;-_attackSpeed {
  
-  //Deal damage:
-  if (instance_exists(_target) and _target&gt;0) {
+   if _attackTimer&gt;-_attackSpeed {
+   if (instance_exists(_target) and _target&gt;0) {
    if (_attackTimer=0) {
+        if(_precisionState=2)and(granadeNumber&gt;0)and(_granadeSpeed=1)
+        {
+        _granadeSpeed-=1
+        granadeNumber-=1
+        var a;
+        a=lob_parameters_e(x,y,_target.x,_target.y,_granadeElevation,_granadeGravity,_granadeSpeedMult);       
+        create_projectile_grenade(x,y,object_index,_group,haleluja_bomb,a[0],a[1],_granadeDamage,_granadeExpScale,spr_explosion,_granadeKnock,0,0,a[2],1); 
+        } 
+        
+  //---------------------------------------------------------------------------------
+
   if(_clipSize&gt;0)
   {_clipSize-=1;
    var precise=irandom_range(-_enemyPrecision*_precisionState,_enemyPrecision*_precisionState);
@@ -300,8 +326,13 @@ if ((_aiState=AI_STATE.hunt) or (_aiState=AI_STATE.ret) or (_aiState=AI_STATE.hi
    if (instance_exists(_target) and _target&gt;0) {
 
     if !HG_collision_line(-1,x,y,_tarX,_tarY,GLOBAL.precision) {
-
-     if distance_to_object(_target)&lt;=_attackRange {
+     if (distance_to_object(_target)&lt;=_granadeRange and _precisionState=2) 
+     {
+      //Start attack animation: 
+      _attackTimer=_granadeLength;
+      }
+     if distance_to_object(_target)&lt;=_attackRange 
+     {
       //Start attack animation: 
       _attackTimer=_attackLength;
       }
@@ -311,7 +342,6 @@ if ((_aiState=AI_STATE.hunt) or (_aiState=AI_STATE.ret) or (_aiState=AI_STATE.hi
    }
 
 end;
-
 </string>
           </argument>
         </arguments>
@@ -333,6 +363,9 @@ end;
           <argument>
             <kind>1</kind>
             <string>///*Attack (Secondary, Disabled)
+
+//Deal damage:
+
 </string>
           </argument>
         </arguments>

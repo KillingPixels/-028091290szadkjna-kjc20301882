@@ -152,6 +152,7 @@
       </sprites>
     </sprites>
     <sprites name="Weapons">
+      <sprite>sprites\haleluja_bomb</sprite>
       <sprite>sprites\weaponTestSpr</sprite>
       <sprite>sprites\spr_bullet_standard</sprite>
       <sprite>sprites\spr_bullet_long</sprite>
@@ -516,6 +517,7 @@
         <script>scripts\player_reset_combat_timer.gml</script>
       </scripts>
       <scripts name="HumanEnemyWeapon">
+        <script>scripts\secondary_weapon_initialize.gml</script>
         <script>scripts\primary_weapon_initialize.gml</script>
       </scripts>
       <scripts name="Movement">
@@ -1034,13 +1036,6 @@
     <room>rooms\room_forest_precapture</room>
     <room>rooms\room_HQ_mission_brief</room>
   </rooms>
-  <constants number="5">
-    <constant name="rpi">pi/180</constant>
-    <constant name="in">/</constant>
-    <constant name="null">noone</constant>
-    <constant name="GM_build_date">41982.3058591898</constant>
-    <constant name="GM_version">'1.0.0.0'</constant>
-  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
