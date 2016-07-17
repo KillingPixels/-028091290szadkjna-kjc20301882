@@ -268,7 +268,7 @@ yy=gui_height()-sprite_get_height(sprite_index);
 draw_sprite(sprite_index,0,xx,yy);
 
 //Debug draw:
-if (true) {
+if (false) {
  draw_text(xx+9,yy+180,"s"+string(stage)+"b"+string(branch));
  }
 
