@@ -57,19 +57,13 @@ _isPrimal=false;
             <string>///*Attack setup
 
 //Primary attack (Slam):
-_attackRange=240; //ENEMY_HUMAN.attackRangePrim;
+
 _prefDist=100; //prefered distance to player
-_attackLength=5;    // custom
-_projectileDamage=0;
-_projectileSpeed=20;
-_projectileKnockback=0;
-_bulletDrop=0;
+
+
 _enemyPrecision=90/skill
-_weaponPrecision=40;
-_numberProjectile=5;
-_clipReloadTime=1;//in  frames*attackSpeed
-_attackSpeed=50 ;//ENEMY_HUMAN.attackCooldown;
-_clipSizeMax=1;//number of bullet
+
+
 
 //Secondary attack:
   //No secondary attack.
@@ -79,9 +73,6 @@ _attackTimer=-_attackSpeed;
 _attackMode=0;
 
 
-//else
-_clipReload=_clipReloadTime;
-_clipSize=_clipSizeMax;
 </string>
           </argument>
         </arguments>

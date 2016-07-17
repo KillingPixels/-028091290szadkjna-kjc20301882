@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///*Initialization
-var skill=3;
+ skill=3;
 set_behavior_values_human1(skill);
 _name="HUMAN";
 
@@ -34,6 +34,8 @@ _group=GROUP.enemy;
 
 _isCommander=false;
 _isPrimal=false;
+_moveMode=0;
+
 </string>
           </argument>
         </arguments>
@@ -56,32 +58,38 @@ _isPrimal=false;
             <kind>1</kind>
             <string>///*Attack setup
 
+
 //Primary attack (Slam):
-_attackRange=320 //ENEMY_HUMAN.attackRangePrim;
-_prefDist=300; //prefered distance to player
-_attackLength=5;    // custom
-_projectileDamage=0;
-_projectileSpeed=20;
-_projectileKnockback=0;
-_bulletDrop=0;
+primary_weapon_initialize("Rifle")
+
+//weapon list---------------------------
+primary_weapon_initialize("Rifle");
+secondary_weapon_initialize("BasicGranade");
+granadeNumber=2
+//------------------------------------------------------
+
+_prefDist=250; //prefered distance to player
+
 _enemyPrecision=90/skill
-_weaponPrecision=20;
-_numberProjectile=1;
-_clipReloadTime=10;//in  frames
-_attackSpeed=5 ;//ENEMY_HUMAN.attackCooldown;
-_clipSizeMax=15;//number of bullet
+
+
 
 //Secondary attack:
   //No secondary attack.
  
 //General:
+
+
+_granadeSpeed=1;
+
+_precisionState=1;
 _attackTimer=-_attackSpeed;
 _attackMode=0;
+_currentHealth=_maxHealth;
 
 
-//else
-_clipReload=_clipReloadTime;
-_clipSize=_clipSizeMax;
+
+
 </string>
           </argument>
         </arguments>
@@ -167,6 +175,48 @@ buf_instance_free();
 //Cooldowns:
 if _attackTimer&gt;-_attackSpeed
  _attackTimer-=1;
+ if(_aiState=AI_STATE.hunt)and(_aiStage=0)
+ {
+    if(_pastHealth&gt;_health) and ((irandom_range(0,skill)=1))
+        {
+
+
+        if(_granadeSpeed=0)_granadeSpeed=1;
+
+        _scriptStep=0;
+        _aiState=AI_STATE.hide;
+        _pastHealth=_health;
+        } 
+    _pastHealth=_health;
+ }
+ if(_aiState=AI_STATE.hide)
+ {
+    if((irandom_range(0,skill*5)=1))
+    if(ai_select_target(_group, _attackRange,0)=-1)
+        {
+        _aiStage=1;
+        _aiState=AI_STATE.hunt;
+        }
+     _pastHealth=_health;
+ }
+if(_aiStage=1)and(_aiState= AI_STATE.hunt)
+   { 
+    if(_pastHealth&gt;_health)
+      {   
+       _aiStage=0;
+       _pastHealth=_health;
+      }
+    if(_currentHideTime&gt;0) _currentHideTime-=1;
+    if(_currentHideTime=0)
+        {
+        _currentHideTime=_hideTIme;
+        _aiStage=0;
+        }
+    
+    _scriptStep=ai_force_stop;
+    }
+    if(_aiState= AI_STATE.flee)_scriptStep=0;
+    
 </string>
           </argument>
         </arguments>
@@ -227,16 +277,29 @@ if _attackTimer&gt;-_attackSpeed
             <string>///*Attack (Primary, Gun)
 var __dist, __dir;
 
-if _aiState=AI_STATE.hunt begin
+if (_aiState=AI_STATE.hunt) _precisionState=1;
+if (_aiState=AI_STATE.ret) or (_aiState=AI_STATE.hide) _precisionState=2;
 
- if _attackTimer&gt;-_attackSpeed {
+if ((_aiState=AI_STATE.hunt) or (_aiState=AI_STATE.ret) or (_aiState=AI_STATE.hide)) begin
+
  
-  //Deal damage:
-  if (instance_exists(_target) and _target&gt;0) {
+   if _attackTimer&gt;-_attackSpeed {
+   if (instance_exists(_target) and _target&gt;0) {
    if (_attackTimer=0) {
+        if(_precisionState=2)and(granadeNumber&gt;0)and(_granadeSpeed=1)
+        {
+        _granadeSpeed-=1
+        granadeNumber-=1
+        var a;
+        a=lob_parameters_e(x,y,_target.x,_target.y,_granadeElevation,_granadeGravity,_granadeSpeedMult);       
+        create_projectile_grenade(x,y,object_index,_group,haleluja_bomb,a[0],a[1],_granadeDamage,_granadeExpScale,spr_explosion,_granadeKnock,0,0,a[2],1); 
+        } 
+        
+  //---------------------------------------------------------------------------------
+
   if(_clipSize&gt;0)
   {_clipSize-=1;
-   var precise=irandom_range(-_enemyPrecision,_enemyPrecision);
+   var precise=irandom_range(-_enemyPrecision*_precisionState,_enemyPrecision*_precisionState);
   for(i=0;i&lt;_numberProjectile;i++)
    { __dir=point_direction(x,y,_target.x,_target.y+(irandom_range(-_weaponPrecision,_weaponPrecision))+precise);
     create_projectile_bullet(x,y,object_index,_group,spr_bullet_long,__dir,_projectileSpeed,_projectileDamage,-1,-1,_projectileKnockback,0,0,_bulletDrop,1)
@@ -263,55 +326,13 @@ if _aiState=AI_STATE.hunt begin
    if (instance_exists(_target) and _target&gt;0) {
 
     if !HG_collision_line(-1,x,y,_tarX,_tarY,GLOBAL.precision) {
-
-     if distance_to_object(_target)&lt;=_attackRange {
+     if (distance_to_object(_target)&lt;=_granadeRange and _precisionState=2) 
+     {
       //Start attack animation: 
-      _attackTimer=_attackLength;
+      _attackTimer=_granadeLength;
       }
-           
-     } 
-    }  
-   }
-
-end;
-if _aiState=AI_STATE.ret begin
-
- if _attackTimer&gt;-_attackSpeed {
- 
-  //Deal damage:
-  if (instance_exists(_target) and _target&gt;0) {
-   if (_attackTimer=0) {
-  if(_clipSize&gt;0)
-  {_clipSize-=1;
-   var precise=irandom_range(-_enemyPrecision*2,_enemyPrecision*2);
-  for(i=0;i&lt;_numberProjectile;i++)
-   { __dir=point_direction(x,y,_target.x,_target.y+(irandom_range(-_weaponPrecision,_weaponPrecision))+precise);
-    create_projectile_bullet(x,y,object_index,_group,spr_bullet_long,__dir,_projectileSpeed,_projectileDamage,-1,-1,_projectileKnockback,0,0,_bulletDrop,1)
-   }
-   }
-   else 
-   {
-   if(_clipReload&gt;0){_clipReload-=1;}
-   if(_clipReload=0)
-   {_clipSize=_clipSizeMax;
-   _clipReload=_clipReloadTime 
-   }
-   
-   }
-  }
-   
-    }
-   }
-  
-  
-  else {
- 
-   //Try to attack:
-   if (instance_exists(_target) and _target&gt;0) {
-
-    if !HG_collision_line(-1,x,y,_tarX,_tarY,GLOBAL.precision) {
-
-     if distance_to_object(_target)&lt;=_attackRange {
+     if distance_to_object(_target)&lt;=_attackRange 
+     {
       //Start attack animation: 
       _attackTimer=_attackLength;
       }
@@ -342,6 +363,9 @@ end;
           <argument>
             <kind>1</kind>
             <string>///*Attack (Secondary, Disabled)
+
+//Deal damage:
+
 </string>
           </argument>
         </arguments>
