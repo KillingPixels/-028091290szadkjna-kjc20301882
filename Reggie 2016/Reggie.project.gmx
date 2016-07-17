@@ -1084,13 +1084,6 @@
     <room>rooms\room_forest_precapture</room>
     <room>rooms\room_HQ_mission_brief</room>
   </rooms>
-  <constants number="5">
-    <constant name="rpi">pi/180</constant>
-    <constant name="in">/</constant>
-    <constant name="null">noone</constant>
-    <constant name="GM_build_date">41982.3058591898</constant>
-    <constant name="GM_version">'1.0.0.0'</constant>
-  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

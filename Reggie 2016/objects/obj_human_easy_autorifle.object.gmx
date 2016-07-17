@@ -58,11 +58,16 @@ _moveMode=0;
             <kind>1</kind>
             <string>///*Attack setup
 
+
+//Primary attack (Slam):
+primary_weapon_initialize("Rifle")
+
 //weapon list---------------------------
 primary_weapon_initialize("Rifle");
 secondary_weapon_initialize("BasicGranade");
 granadeNumber=2
 //------------------------------------------------------
+
 _prefDist=250; //prefered distance to player
 
 _enemyPrecision=90/skill
@@ -73,7 +78,10 @@ _enemyPrecision=90/skill
   //No secondary attack.
  
 //General:
+
+
 _granadeSpeed=1;
+
 _precisionState=1;
 _attackTimer=-_attackSpeed;
 _attackMode=0;
@@ -171,7 +179,10 @@ if _attackTimer&gt;-_attackSpeed
  {
     if(_pastHealth&gt;_health) and ((irandom_range(0,skill)=1))
         {
+
+
         if(_granadeSpeed=0)_granadeSpeed=1;
+
         _scriptStep=0;
         _aiState=AI_STATE.hide;
         _pastHealth=_health;
@@ -331,7 +342,6 @@ if ((_aiState=AI_STATE.hunt) or (_aiState=AI_STATE.ret) or (_aiState=AI_STATE.hi
    }
 
 end;
-
 </string>
           </argument>
         </arguments>
