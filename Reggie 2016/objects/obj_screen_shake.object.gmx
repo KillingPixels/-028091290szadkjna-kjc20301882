@@ -28,6 +28,7 @@
             <string>_length=10; // Steps
 _topLength=_length;
 _max=4;
+_min=2;
 _xOff=0;
 _yOff=0;
 </string>
@@ -52,8 +53,8 @@ _yOff=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>_xOff = random(_max)/_topLength * _length /* choose(-1,1)*/;
-_yOff = random(_max)/_topLength * _length /* choose(-1,1)*/;
+            <string>_xOff = irandom_range(_min/2,_max/2)/_topLength * _length /* choose(-1,1)*/;
+_yOff = irandom_range(_min,_max)/_topLength * _length /* choose(-1,1)*/;
 --_length;
 
 if (_length &lt;= 0)

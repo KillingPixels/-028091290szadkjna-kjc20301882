@@ -152,6 +152,7 @@
       </sprites>
     </sprites>
     <sprites name="Weapons">
+      <sprite>sprites\haleluja_bomb</sprite>
       <sprite>sprites\weaponTestSpr</sprite>
       <sprite>sprites\spr_bullet_standard</sprite>
       <sprite>sprites\spr_bullet_long</sprite>
@@ -516,6 +517,7 @@
         <script>scripts\player_reset_combat_timer.gml</script>
       </scripts>
       <scripts name="HumanEnemyWeapon">
+        <script>scripts\secondary_weapon_initialize.gml</script>
         <script>scripts\primary_weapon_initialize.gml</script>
       </scripts>
       <scripts name="Movement">

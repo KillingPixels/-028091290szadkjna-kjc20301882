@@ -159,6 +159,7 @@
     <instance objName="obj_hg_earth_block" x="672" y="336" name="inst_74F9744B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_earth_block" x="528" y="336" name="inst_4150B12D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_human_easy_autorifle" x="448" y="240" name="inst_9F16A825" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemy_turta" x="320" y="320" name="inst_DF030443" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset_s_1" x="448" y="320" w="32" h="32" xo="106" yo="1" id="10000724" name="inst_09F138A4" depth="5" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
