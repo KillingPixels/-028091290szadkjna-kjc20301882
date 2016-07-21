@@ -195,6 +195,7 @@
     <instance objName="placeholderObj" x="4528" y="480" name="inst_99823412" locked="0" code="/* Designer's Notes 7/8&#xA;&#xA;Art: The player approaches a large monument/tomb of one of the leaders of the party in its&#xA;early days. It's expensive, contrasting with the humble slabs the normal citizens recieve.&#xA;A loud speaker is playing music, and cameras are perched on top of the tomb to record &#xA;any vandalization. On one side you can see the begnnings of politically motivated &#xA;graffiti, and on a post will be a sign reminding the people of the importance of this leader&#xA;as well as a seperate reminder that warns them of the consequences of vandalizing this &#xA;particular mounument which carries treason charges punishable by death.&#xA;&#xA;Music: I'll look for some public domain soviet era music." scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_earth_block" x="6528" y="560" name="inst_0A3EF5DA" locked="0" code="" scaleX="1" scaleY="5" colour="4294967295" rotation="0"/>
     <instance objName="spr_camera_foot" x="1968" y="960" name="inst_7A4C51C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pfd_controller" x="192" y="0" name="inst_78A583DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset_l_1" x="64" y="816" w="128" h="64" xo="1" yo="1" id="10000761" name="inst_7B448397" depth="5" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

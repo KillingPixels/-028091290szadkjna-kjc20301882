@@ -202,7 +202,7 @@ if update_box=true {
    counter+=1;
    
    var t=TPP_text_get_lines(g);
-   TPP_text_append(g,b,text_width,text_sep,1);
+   TPP_text_append(g,b);
    rows[i]=TPP_text_get_lines(g)-t;
    
    }

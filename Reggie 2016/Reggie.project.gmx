@@ -30,6 +30,7 @@
         <sprite>sprites\spr_ctrl_game</sprite>
         <sprite>sprites\spr_ctrl_hg</sprite>
         <sprite>sprites\spr_ctrl_fsm</sprite>
+        <sprite>sprites\spr_ctrl_pfd</sprite>
         <sprite>sprites\spr_ctrl_camera_foot</sprite>
       </sprites>
     </sprites>
@@ -145,6 +146,7 @@
       <sprite>sprites\spr_player_bug</sprite>
       <sprite>sprites\spr_enemy_sct</sprite>
       <sprite>sprites\spr_enemy_turta</sprite>
+      <sprite>sprites\spr_primal_basic</sprite>
       <sprites name="Default">
         <sprite>sprites\spr_enemy_brain</sprite>
         <sprite>sprites\spr_enemy_robocop</sprite>
@@ -225,6 +227,8 @@
         <script>scripts\gp_sum.gml</script>
         <script>scripts\bias_0.gml</script>
         <script>scripts\bias_1.gml</script>
+        <script>scripts\mp_grid_to_str.gml</script>
+        <script>scripts\str_to_mp_grid.gml</script>
         <script>scripts\set_abs_end_action.gml</script>
         <script>scripts\collision_line_distance.gml</script>
         <script>scripts\screen_flash.gml</script>
@@ -482,6 +486,27 @@
           <script>scripts\txt_path_get.gml</script>
         </scripts>
       </scripts>
+      <scripts name="Pathfinding">
+        <script>scripts\pfd_initialise.gml</script>
+        <script>scripts\pfd_free.gml</script>
+        <script>scripts\pfd_instance_init.gml</script>
+        <script>scripts\pfd_tracker_init.gml</script>
+        <script>scripts\pfd_create_path.gml</script>
+        <script>scripts\pfd_tracker_clear.gml</script>
+        <script>scripts\pfd_serve.gml</script>
+        <script>scripts\pfd_request.gml</script>
+        <script>scripts\pfd_find_free_x.gml</script>
+        <script>scripts\pfd_find_free_y.gml</script>
+        <script>scripts\pfd_write.gml</script>
+        <script>scripts\pfd_read.gml</script>
+      </scripts>
+      <scripts name="Splats">
+        <script>scripts\spl_initialize.gml</script>
+        <script>scripts\spl_free.gml</script>
+        <script>scripts\spl_tick.gml</script>
+        <script>scripts\spl_draw_surface.gml</script>
+        <script>scripts\spl_draw_point.gml</script>
+      </scripts>
       <scripts name="Saving / Loading">
         <script>scripts\game_save_checkpoint.gml</script>
         <script>scripts\game_load_checkpoint.gml</script>
@@ -545,20 +570,6 @@
           <script>scripts\ai_force_idle.gml</script>
           <script>scripts\ai_force_halt.gml</script>
         </scripts>
-      </scripts>
-      <scripts name="Pathfinding">
-        <script>scripts\pfd_initialise.gml</script>
-        <script>scripts\pfd_free.gml</script>
-        <script>scripts\pfd_instance_init.gml</script>
-        <script>scripts\pfd_tracker_init.gml</script>
-        <script>scripts\pfd_create_path.gml</script>
-        <script>scripts\pfd_tracker_clear.gml</script>
-        <script>scripts\pfd_serve.gml</script>
-        <script>scripts\pfd_request.gml</script>
-        <script>scripts\pfd_find_free_x.gml</script>
-        <script>scripts\pfd_find_free_y.gml</script>
-        <script>scripts\pfd_write.gml</script>
-        <script>scripts\pfd_read.gml</script>
       </scripts>
       <scripts name="Behaviors">
         <scripts name="Global Primal">
@@ -888,39 +899,32 @@
       <scripts name="Definitions">
         <script>scripts\TPP_define_var.gml</script>
         <script>scripts\TPP_clear_definitions.gml</script>
-        <script>scripts\STUB_TPP_define_defaults.gml</script>
+        <script>scripts\TPP_define_defaults.gml</script>
         <script>scripts\TPP_define_local.gml</script>
       </scripts>
       <scripts name="Text">
         <script>scripts\TPP_text_print.gml</script>
         <script>scripts\TPP_text_parse.gml</script>
+        <script>scripts\TPP_text_append.gml</script>
         <script>scripts\TPP_text_print_ext.gml</script>
         <script>scripts\TPP_text_print_ext_part.gml</script>
-        <script>scripts\TPP_text_append.gml</script>
         <script>scripts\TPP_text_free.gml</script>
         <script>scripts\TPP_text_get_lines.gml</script>
+        <script>scripts\TPP_text_length.gml</script>
       </scripts>
       <scripts name="Utility">
-        <script>scripts\TPP_string_width.gml</script>
+        <script>scripts\TPP_settings.gml</script>
         <script>scripts\TPP_link_get_hover.gml</script>
         <script>scripts\TPP_link_clear_hover.gml</script>
-        <script>scripts\TPP_execute_code.gml</script>
-        <script>scripts\TPP_settings.gml</script>
         <script>scripts\TPP_set_cursor.gml</script>
-        <script>scripts\STUB_TPP_merge.gml</script>
+        <script>scripts\TPP_execute_code.gml</script>
       </scripts>
       <scripts name="Underlying">
-        <scripts name="Text">
-          <script>scripts\tpp_print_line.gml</script>
-        </scripts>
-        <scripts name="Stack">
-          <script>scripts\tpp_push.gml</script>
-          <script>scripts\tpp_pop_execute.gml</script>
-        </scripts>
-        <scripts name="Miscellaneous">
-          <script>scripts\tpp_link_colour.gml</script>
-          <script>scripts\tpp_add_line_to_grid.gml</script>
-        </scripts>
+        <script>scripts\tpp_print_line.gml</script>
+        <script>scripts\tpp_push.gml</script>
+        <script>scripts\tpp_pop_execute.gml</script>
+        <script>scripts\tpp_link_colour.gml</script>
+        <script>scripts\tpp_add_line_to_grid.gml</script>
       </scripts>
     </scripts>
     <scripts name="Documentation">
@@ -954,11 +958,12 @@
     <objects name="Controllers">
       <object>objects\obj_game_controller</object>
       <object>objects\obj_hg_controller</object>
+      <object>objects\obj_pfd_controller</object>
       <object>objects\obj_scenery</object>
+      <object>objects\obj_camera</object>
       <object>objects\spr_camera_foot</object>
       <object>objects\obj_heart_attack</object>
       <object>objects\obj_ha_delayed</object>
-      <object>objects\obj_camera</object>
       <object>objects\obj_screen_flash</object>
       <object>objects\obj_screen_fade</object>
       <object>objects\obj_screen_shake</object>

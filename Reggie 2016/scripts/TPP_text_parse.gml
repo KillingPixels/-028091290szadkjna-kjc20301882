@@ -1,14 +1,13 @@
 ///TPP_text_parse(String, Colour, Alpha, Font, spr_vAlign, centerLines, Width, Sep, Justify)
 /*
 
-Additional: Total W, total H
+Prepares a string to be printed with more complex printing
+functions later on. Be careful, this is a very slow function.
 
-Needs a cleared stack.
-
-Returns: Grid ID
+Returns: (Integer) Grid ID, later to be used with other functions.
 
 */
-var i,t,p,v,c,c2,g,l,work_str,fnt,width,sep,pad,tot_w,tot_h;
+var i,t,p,v,c,c2,g,l,work_str,fnt,width,sep,pad,tot_h,jt;
 var line_s,line_l,line_w,line_h,word_s,word_w,word_l,word_h;
 
 work_str=argument0;
@@ -16,6 +15,8 @@ fnt=argument3;
 width=argument6;
 sep=argument7;
 pad=argument8;
+
+jt=global.TPP_JT;
 
 g=ds_grid_create(4,1);
 
@@ -34,7 +35,6 @@ line_l=0;
 line_w=0;
 line_h=0;
 
-tot_w=0;
 tot_h=0;
 
 for (i=1; i<=string_length(work_str); i+=1) {
@@ -136,10 +136,9 @@ for (i=1; i<=string_length(work_str); i+=1) {
             else {
             
               //Break line, add to next line:
-              p=min((width+pad-line_w)/(line_l),pad)*(line_w>width/2);
+              p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
               if (sep==-1) v=line_h; else v=sep;
               tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
-              tot_w=line_w+line_l*p;
               tot_h=tot_h+v;
               
               line_s=word_s;
@@ -165,10 +164,9 @@ for (i=1; i<=string_length(work_str); i+=1) {
             else {
             
               //Break line, add to next line:
-              p=min((width+pad-line_w)/(line_l),pad)*(line_w>width/2);
+              p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
               if (sep==-1) v=line_h; else v=sep;
               tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
-              tot_w=line_w+line_l*p;
               tot_h=tot_h+v;
               
               line_s="[spr:"+vn+"]";
@@ -214,10 +212,9 @@ for (i=1; i<=string_length(work_str); i+=1) {
             else {
             
               //Break line, add to next line:
-              p=min((width+pad-line_w)/(line_l),pad)*(line_w>width/2);
+              p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
               if (sep==-1) v=line_h; else v=sep;
               tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
-              tot_w=line_w+line_l*p;
               tot_h=tot_h+v;
               
               line_s=word_s;
@@ -243,10 +240,9 @@ for (i=1; i<=string_length(work_str); i+=1) {
             else {
             
               //Break line, add to next line:
-              p=min((width+pad-line_w)/(line_l),pad)*(line_w>width/2);
+              p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
               if (sep==-1) v=line_h; else v=sep;
               tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
-              tot_w=line_w+line_l*p;
               tot_h=tot_h+v;
               
               line_s="[spr:"+vn+"]";
@@ -337,10 +333,9 @@ for (i=1; i<=string_length(work_str); i+=1) {
             else {
             
               //Break line, add to next line:
-              p=min((width+pad-line_w)/(line_l),pad)*(line_w>width/2);
+              p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
               if (sep==-1) v=line_h; else v=sep;
               tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
-              tot_w=line_w+line_l*p;
               tot_h=tot_h+v;
               
               line_s=word_s;
@@ -380,10 +375,9 @@ for (i=1; i<=string_length(work_str); i+=1) {
                 else {
             
                   //Break line, add to next line:
-                  p=min((width+pad-line_w)/(line_l),pad)*(line_w>width/2);
+                  p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
                   if (sep==-1) v=line_h; else v=sep;
                   tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
-                  tot_w=line_w+line_l*p;
                   tot_h=tot_h+v;
               
                   line_s=word_s;
@@ -394,11 +388,10 @@ for (i=1; i<=string_length(work_str); i+=1) {
                   }
                   
               //Break line:
-              p=min((width+pad-line_w)/(line_l),pad)*(line_w>width/2);
+              p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
               if (sep==-1) v=line_h; else v=sep;
               if (v==0) v=string_height("A");
               tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
-              tot_w=line_w+line_l*p;
               tot_h=tot_h+v;
               
               line_s="";
@@ -424,16 +417,25 @@ for (i=1; i<=string_length(work_str); i+=1) {
   if (word_w>=width) {
   
     //Break line, add to next line:
-    p=min((width+pad-line_w)/(line_l),pad)*(line_w>width/2);
+    p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
     if (sep==-1) v=line_h; else v=sep;
     tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
-    tot_w=line_w+line_l*p;
     tot_h=tot_h+v;
               
     line_s=word_s;
     line_l=word_l;
     line_w=word_w;
     line_h=max(line_h,word_h);
+    
+    p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
+    if (sep==-1) v=line_h; else v=sep;
+    tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
+    tot_h=tot_h+v;
+    
+    line_s="";
+    line_l=0;
+    line_w=0;
+    line_h=0;
     word_s="";
     word_l=0;
     word_w=0;
@@ -462,10 +464,9 @@ if (word_s<>"") {
     else {
             
       //Break line, add to next line:
-      p=min((width+pad-line_w)/(line_l),pad)*(line_w>width/2);
+      p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
       if (sep==-1) v=line_h; else v=sep;
       tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
-      tot_w=line_w+line_l*p;
       tot_h=tot_h+v;
               
       line_s=word_s;
@@ -483,10 +484,9 @@ if (word_s<>"") {
   
 if (line_s<>"") {
 
-  p=min((width+pad-line_w)/(line_l),pad)*(line_w>width/2);
+  p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
   if (sep==-1) v=line_h; else v=sep;
   tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
-  tot_w=line_w+line_l*p;
   tot_h=tot_h+v;              
   
   }
@@ -499,8 +499,11 @@ l[|TPP_LIST.alpha]=argument2;
 l[|TPP_LIST.font]=argument3;
 l[|TPP_LIST.spr_valign]=argument4;
 l[|TPP_LIST.centerlines]=argument5;
-l[|TPP_LIST.maxwidth]=tot_w;
 l[|TPP_LIST.maxheight]=tot_h;
+
+l[|TPP_LIST.def_width]=width;
+l[|TPP_LIST.def_sep]=sep;
+l[|TPP_LIST.def_just]=pad;
 
 g[#0,0]=l;
 

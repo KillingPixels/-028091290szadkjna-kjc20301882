@@ -16,7 +16,7 @@ var __movespeed=5,      // Pixels per step
     __friction=4,       // Integer: 0,1,2... 
     __jumpPower=12,
     
-    __jumpCd=60,        // Jump cooldown in steps 
+    __jumpCd=30,        // Jump cooldown in steps 
         
     //Mask:
     __maskDefault=aiDefaultMask,

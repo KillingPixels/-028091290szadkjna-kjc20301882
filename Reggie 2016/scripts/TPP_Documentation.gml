@@ -82,7 +82,7 @@
     Tags may be nested in each other and you won't have issues as long as they're
     closed properly.
     A hashtag ( # ) is NOT considered a new-line character, and it doesn't have any
-    special purpose. In odred to break line, type "\n".
+    special purpose. In odrer to break line, type "\n".
     
    -TPP_text_print(X, Y, String, Colour, Alpha, Font, spr_vAlign, centerLine):
     This is the simplest text printing function. It requires no preparation but it
@@ -114,20 +114,34 @@
     store the parsed text. Don't forget to destroy it afterwards with TPP_text_free(), and
     don't use ds_grid_destroy() because of nested data structures).
     
+   -TPP_text_append(Grid ID, String):
+    With this function you can add more text to a ds_grid of already parsed text. You'll need
+    to provide the ID of the target grid (that you get from TPP_text_parse()) and a string.
+    Note that this new text will start in a new line, and all settings (width, separation,
+    alpha, color etc.) will stay as they were at the making of the original grid.
+    
    -TPP_text_print_ext(X, Y, Grid ID, hAlign, vAlign):
     Use this function to draw the text that has previously been prepared through the use of
     TPP_text_parse(). As the "Grid ID" argument put the value the parsing script returned.
     The first two arguments are the coordinates to print at. For "hAlign" you must put one
     of these: fa_left, fa_center, fa_right. For "vAlign" you must put one of these: fa_top,
-    fa_center, fa_bottom.    
+    fa_center, fa_bottom.  
     
->>MISCELLANEOUS:
+   -TPP_text_print_ext_part(X, Y, Grid ID, hAlign, vAlign, Start, End):
+    Same as TPP_text_print_ext() but will only print text from line Start to line End. The
+    index of the first line is 1, and NOT zero. You can get the maximum number of lines with 
+    TPP_text_get_lines().
+    <Currently this function doesn't work with vertical alignments other than fa_top>
+    
+>>MISCELLANEOUS FUNCTIONS:
    -TPP_clear_definitions():
     No arguments.
     Deletes all variable definitions created using TPP_define_var().
     
    -TPP_define_defaults():
-    <Work in progress>
+    Defines all default values:
+      Colours (all for which GM has constants).
+      That's it for now.
     
    -TPP_set_cursor(X, Y, Flag):
     This functions is only needed if you want to make links in text. As no assumptions
@@ -140,7 +154,7 @@
     (preferrably in Step, End Step or Pre-Draw event). However, since GUI coordinates
     are not the same as world coordinates, if you're printing anything in GUI you'll
     also need to call it once after the Draw event but before Draw GUI event (so
-    preferrably in Post_draw event).      
+    preferrably in Post-draw event).      
     
    -TPP_link_get_hover():
     No arguments.
@@ -158,18 +172,22 @@
     
    -TPP_execute_code():
     <Work in progress>
-    
-   -TPP_string_width():
-    <Currently doesn't work>
         
 >>SETTINGS:
    -TPP_settings(HoverCol_1, HoverCol_2, HoverAlpha):
     Use this function to set some general parameters for the parser.
-      HoverCol_1 - (Real) Colour of link backdrop that's drawn when the cursor is
-                   hovering over the link.
-      HoverCol_2 - (Real) Colour of link backdrop that's drawn when the cursor is
-                   clicking or otherwise activating the link.
-      HoverAlpha - (Real) Alpha of the backdrops mentioned above.
+    HoverCol_1 - (Real) Colour of link backdrop that's drawn when the cursor is
+                        hovering over the link.
+    HoverCol_2 - (Real) Colour of link backdrop that's drawn when the cursor is
+                        clicking or otherwise activating the link.
+    HoverAlpha - (Real) Alpha of the backdrops mentioned above.
+    
+    JustTreshold - (Real) A real value between 0 and 1, which determines how much
+                          of a line if text needs to be filled with characters in
+                          order to enable justification. With 0 the text will
+                          always be justified as much as required and possible,
+                          with 0.5 at least half of the line will need to be filled
+                          in order to be justified etc. The default value is 0.75.
 
 
       

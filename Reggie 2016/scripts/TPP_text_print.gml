@@ -1,6 +1,11 @@
 ///TPP_text_print(X, Y, String, Colour, Alpha, Font, spr_vAlign, centerLine)
 /*
 
+Simple text-printing function. Requires no preparation.
+
+Returns: (String) Identifier of the activated link or an
+         empty string if no link was activated.
+
 */
 var xx,yy,work_str,col,alp,fnt,spr_valign;
 
