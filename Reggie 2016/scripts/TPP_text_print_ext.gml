@@ -1,7 +1,11 @@
 ///TPP_text_print_ext(X, Y, Grid ID, hAlign, vAlign)
 /*
 
+A more complex text printing function. Requires a Grid ID
+returned by TPP_text_parse().
 
+Returns: (String) Identifier of the activated link or an
+         empty string if no link was activated.
 
 */
 var i,g,l,xx,yy,xorig,temp,retval;

@@ -1,6 +1,11 @@
 ///TPP_free()
 /*
 
+Frees the memory used by the parser, except the grids you get from
+TPP_text_parse().
+
+Returns: n/a
+
 */
 
 ds_map_destroy(global.TPP_VARMAP);

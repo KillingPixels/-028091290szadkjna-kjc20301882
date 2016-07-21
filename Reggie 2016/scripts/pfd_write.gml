@@ -2,18 +2,10 @@
 /*
 
 */
-var w,h,g,s;
-var size=8;
+var w,h;
+var size=GLOBAL.pfd_size;
 
 w=ceil(room_width/size);
 h=ceil(room_height/size);
 
-g=ds_grid_create(w,h);
-
-mp_grid_to_ds_grid(global.pfd_grid,g);
-
-s=ds_grid_write(g);
-
-ds_grid_destroy(g);
-
-return s;
+return mp_grid_to_str(global.pfd_grid,w,h);

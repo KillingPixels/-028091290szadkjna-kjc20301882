@@ -153,12 +153,13 @@
     <instance objName="obj_campfire" x="911" y="440" name="inst_83029681" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="dcAwesomeObj" x="144" y="224" name="inst_EA2F88C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_earth_block" x="368" y="336" name="inst_E0DEA258" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_enemy_basic" x="752" y="416" name="inst_F31A76FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemy_basic" x="496" y="320" name="inst_F31A76FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pfd_controller" x="96" y="0" name="inst_32E010EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset_s_1" x="448" y="320" w="32" h="32" xo="106" yo="1" id="10000724" name="inst_09F138A4" depth="5" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_tileset_s_1" x="288" y="320" w="32" h="32" xo="106" yo="1" id="10000725" name="inst_75E4CB27" depth="5" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_tileset_s_1" x="368" y="272" w="32" h="32" xo="71" yo="1" id="10000726" name="inst_C4EE6475" depth="5" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_tileset_s_1" x="352" y="288" w="32" h="32" xo="71" yo="1" id="10000726" name="inst_C4EE6475" depth="5" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_tileset_s_1" x="48" y="192" w="32" h="32" xo="36" yo="1" id="10000727" name="inst_ECB1377F" depth="5" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_tileset_s_1" x="720" y="192" w="32" h="32" xo="1" yo="1" id="10000728" name="inst_B4A5ABAD" depth="5" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_tileset_s_1" x="752" y="192" w="32" h="32" xo="1" yo="1" id="10000729" name="inst_39665CE8" depth="5" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

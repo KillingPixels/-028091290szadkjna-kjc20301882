@@ -16,8 +16,7 @@ ini_write_string("JOURNAL","GRID",journal_write(0));
 ini_write_string("JOURNAL","LIST",journal_write(1));
 
 //Terrain:
-var s=terr_write(0);
-ini_write_string("TERR","TYP",s);
+ini_write_string("TERR","TYP",terr_write(0));
 
 //Pathfinding grid:
 ini_write_string("PATHFINDING","GRID",pfd_write());

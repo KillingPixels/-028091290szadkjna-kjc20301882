@@ -12,7 +12,7 @@
    ++Shops' inventories do not increase when The Player sells something, but they
      do decrease when The Player buys something.
      
-   OBJECT DEPTHS:
+   OBJECT DEPTHS: [Objects with higher depths go first]
    -150 Finite state machines
    -125 Mercury controller
    -105 GUI window objects
@@ -29,6 +29,9 @@
     
 >>To do:
 
+  Enemy animations
+  Bigger textbox
+  Setting to turn splat surfaces on/off
   Shift / stamina
   !!!Fix Mercury (light_create double list creation)
   Rewrite screen_shake

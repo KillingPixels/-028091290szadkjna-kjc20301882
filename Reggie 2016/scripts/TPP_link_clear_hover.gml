@@ -1,8 +1,15 @@
 //TPP_link_clear_hover()
 /*
 
-Needs to be called at the VERY END of a step
-to clear link hover state.
+From Documentation:
+ "This functions is only needed if you want to make links in text. It prepares some
+  variables that are needed for drawing links correctly and you will encounter
+  visual errors if you don't use this function correctly. It's important to call
+  this script at the very end of a step (so after all drawing is done) OR before
+  any drawing is done. Just remember that you need to call this script exactly ONCE
+  per step."
+  
+Returns: n/a
 
 */
 

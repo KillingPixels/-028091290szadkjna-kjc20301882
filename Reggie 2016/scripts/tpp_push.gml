@@ -1,7 +1,13 @@
 ///tpp_push(Command, ID)
 /*
 
-Underlying TPP script.
+Underlying TPP script:
+  Pushes a command on the underlying stack.
+
+NOTES:
+  --
+  
+Returns: n/a
 
 */
 

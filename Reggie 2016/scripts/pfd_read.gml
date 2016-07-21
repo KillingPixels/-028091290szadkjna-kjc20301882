@@ -2,7 +2,11 @@
 /*
 
 */
-var g,gg;
+var;
+
+global.pfd_grid=str_to_mp_grid(argument0,GLOBAL.pfd_size,GLOBAL.pfd_size);
+
+/*var g,gg;
 
 g=ds_grid_create(0,0);
 gg=global.pfd_grid;
@@ -18,4 +22,6 @@ for (t=0; t<ds_grid_height(g); t+=1) {
  }
 }
 
-ds_grid_destroy(g);
+ds_grid_destroy(g);*/
+
+
