@@ -16,6 +16,8 @@ inv_free();
 txt_free();
 ptc_free();
 
+spl_free();
+
 NSP_free(true);
 TPP_free();
 

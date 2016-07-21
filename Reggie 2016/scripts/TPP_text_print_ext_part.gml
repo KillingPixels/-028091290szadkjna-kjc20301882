@@ -1,7 +1,12 @@
 ///TPP_text_print_ext_part(X, Y, Grid ID, hAlign, vAlign, Start, End)
 /*
 
+A more complex text printing function. Requires a Grid ID
+returned by TPP_text_parse(). Prints only certain lines of text,
+from "Start" line to "End" line.
 
+Returns: (String) Identifier of the activated link or an
+         empty string if no link was activated.
 
 */
 var i,g,l,xx,yy,xorig,temp,retval,line_s,line_e;

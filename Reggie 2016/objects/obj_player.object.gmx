@@ -737,7 +737,6 @@ if (__item &lt;&gt; "") and
             <string>///Draw self
 
 //draw_sprite_ext(mask_index,0,x,y,1,1,0,c_white,0.5);
-//mp_grid_draw(global.pfd_grid);
 
 draw_sprite_ext(spr_player_run,image_index,x,y,_imageXScale,ite_ext(_movementState&lt;&gt;0,0.5,1),0,c_white,1);
 
@@ -749,6 +748,29 @@ s+="#uop!";
 draw_text_ext(mouse_x,mouse_y,s,16,999);*/
  
 //draw_bbox(0,c_fuchsia);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if !mouse_check_button(mb_middle) exit;
+
+spl_draw_point(mouse_x-view_xview,mouse_y-view_yview);
 </string>
           </argument>
         </arguments>

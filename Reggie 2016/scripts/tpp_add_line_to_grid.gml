@@ -1,7 +1,13 @@
 ///tpp_add_line_to_grid(Grid, String, Width, Height, Padding)
 /*
 
-Underlying TPP script.
+Underlying TPP script:
+  Adds a new line to a ds_grid of parsed text.
+
+NOTES:
+  --
+  
+Returns: n/a
 
 */
 var g,work_str,w,h,c_h,pad;

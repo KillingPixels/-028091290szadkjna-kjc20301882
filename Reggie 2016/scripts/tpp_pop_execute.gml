@@ -1,7 +1,13 @@
 ///tpp_pop_execute()
 /*
 
-Underlying TPP script.
+Underlying TPP script:
+  Pops a command from the underlying stack and executes it.
+
+NOTES:
+  --
+  
+Returns: n/a
 
 */
 var cm,_id;

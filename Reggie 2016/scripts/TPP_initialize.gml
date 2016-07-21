@@ -1,6 +1,10 @@
 ///TPP_initialize()
 /*
 
+Initializes the parser. Needs to be called before any other TPP_* scripts.
+
+Returns: n/a
+
 */
 
 enum TPP {
@@ -20,8 +24,10 @@ enum TPP_LIST {
   font,
   spr_valign,
   centerlines,
-  maxwidth,
-  maxheight
+  maxheight,
+  def_width,
+  def_sep,
+  def_just
 
   }
   
@@ -30,6 +36,8 @@ global.TPP_STACK_CM=ds_stack_create();
 global.TPP_STACK_ID=ds_stack_create();
 
 global.TPP_FONT=-1;
+
+global.TPP_JT=0.75;
 
 global.TPP_CURSOR_X=0;
 global.TPP_CURSOR_Y=0;

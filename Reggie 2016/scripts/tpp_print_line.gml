@@ -1,12 +1,13 @@
 ///tpp_print_line(X, Y, String, Padding, spr_vAlign, centerLines)
 /*
 
-Underlying TPP script.
+Underlying TPP script:
+  Basic single line printing function.
 
-Requires the font set up beforehand!
-
-To do:
-  Link cover colour/alpha generalization
+NOTES:
+  Requires the font set up beforehand.
+  
+Returns: (String) Link identifier.
 
 */
 var i,t,w,c,c2,xx,yy,yorig,work_str,vn,stack,retval;
@@ -15,7 +16,7 @@ var oldhover,pad,valign,cl,hoveralp,mx,my;
 //*** SET UP VARIABLES:
 
 xx=argument0;
-yy=argument1//+string_height("A")/2; // *
+yy=argument1;
 yorig=argument1;
 work_str=argument2;
 
@@ -30,7 +31,7 @@ hoveralp=global.TPP_HOVER_ALPHA;
 mx=global.TPP_CURSOR_X;
 my=global.TPP_CURSOR_Y;
 
-draw_set_valign(fa_top); // *
+draw_set_valign(fa_top);
 draw_set_halign(fa_left);
 
 //*** ENTER LOOP:
@@ -146,7 +147,6 @@ for (i=1; i<=string_length(work_str); i+=1) {
           //Linked image:
           if (global.TPP_LINK_CURRENT<>"") {          
           
-            // GEN
             var flag=point_in_rectangle(mx,my,xx+w,syy,xx+w+sprite_get_width(ind),syy+sprite_get_height(ind));
             
             if (flag==true) {
@@ -225,7 +225,6 @@ for (i=1; i<=string_length(work_str); i+=1) {
           //Linked image:
           if (global.TPP_LINK_CURRENT<>"") {          
           
-            // GEN
             var flag=point_in_rectangle(mx,my,xx+w,syy,xx+w+sprite_get_width(ind),syy+sprite_get_height(ind));
             
             if (flag==true) {
@@ -346,8 +345,7 @@ for (i=1; i<=string_length(work_str); i+=1) {
       //Draw clickable letter:
       draw_text(xx+w,yy,c);
       w+=string_width(c)+pad;
-      
-      //GEN
+
       var flag=point_in_rectangle(mx,my,xx+w-pad-string_width(c),yy,xx+w,yy+string_height("A"));
     
       if (flag==true) {

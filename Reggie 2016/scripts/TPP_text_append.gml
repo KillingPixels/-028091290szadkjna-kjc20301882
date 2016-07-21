@@ -1,14 +1,19 @@
-///TPP_text_append(Grid ID, String, Width, Sep, Justify)
+///TPP_text_append(Grid ID, String)
 /*
 
-Appends text to an already parsed text / grid.
+Appends text to an already parsed text / grid. Will start
+in a new line and use settings from the previous
+preparations.
+
+Returns: n/a
 
 */
 var i,g,l,t,target,c_h;
 
 target=argument0;
+l=target[#0,0];
 
-g=TPP_text_parse(argument1,0,0,0,0,0,argument2,argument3,argument4);
+g=TPP_text_parse(argument1,0,0,0,0,0,l[|TPP_LIST.def_width],l[|TPP_LIST.def_sep],l[|TPP_LIST.def_just]);
 
 for (i=1; i<ds_grid_height(g); i+=1) {
 
@@ -21,11 +26,8 @@ for (i=1; i<ds_grid_height(g); i+=1) {
   target[#3,c_h]=g[#3,i];
 
   }
-  
-l=target[#0,0];
-t=g[#0,0];
 
-l[|TPP_LIST.maxwidth] =max(l[|TPP_LIST.maxwidth], t[|TPP_LIST.maxwidth]);
-l[|TPP_LIST.maxheight]=max(l[|TPP_LIST.maxheight],t[|TPP_LIST.maxheight]);
+t=g[#0,0];
+l[|TPP_LIST.maxheight]+=t[|TPP_LIST.maxheight];
 
 TPP_text_free(g);
