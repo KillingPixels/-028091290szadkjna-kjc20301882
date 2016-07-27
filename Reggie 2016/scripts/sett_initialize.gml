@@ -62,13 +62,15 @@ global.sett_map=ds_map_create();
   sett_desc_to_last("Use this when the display doesn't rescale well after resizing the window or toggling fullscreen.");
  
  //Gameplay:
- global.sett_gameplay=1;
+ global.sett_gameplay=2;
  sett_define_value("Auto Equip",SETT_TYPE.selection,SETT_GROUP.gameplay,"Off","Weapons","Most","All");
-  sett_desc_to_last("Determines if picked up items will be automatically equipped.#Weapons - only Weapons will be Auto-Equipped.#Most - Everything but Armour will be Auto-Equipped.#All - All items will be Auto-Equipped.")
+  sett_desc_to_last("Determines if picked up items will be automatically equipped.#Weapons - only Weapons will be Auto-Equipped.#Most - Everything but Armour will be Auto-Equipped.#All - All items will be Auto-Equipped.");
+ sett_define_value("Textbox Speed",SETT_TYPE.selection,SETT_GROUP.gameplay,"Slow","Regular","Fast","Instant");
+  sett_desc_to_last("The rate at which the letters appear in the textbox during conversations.");
  
  //Graphics:
  global.sett_graphics=8;
- sett_define_value("GUI Scale",SETT_TYPE.selection,SETT_GROUP.graphics,"75%","100%","125%","150%","175%","200%");
+ sett_define_value("GUI Scale",SETT_TYPE.selection,SETT_GROUP.graphics,"100%","125%","150%","175%","200%");
   sett_desc_to_last("Determines size of the GUI elements.");
  sett_define_value("Info Box Opacity",SETT_TYPE.percent_scale,SETT_GROUP.graphics,0,100);
   sett_desc_to_last("Minimal opacity of the info box when it fades (when not in use).");

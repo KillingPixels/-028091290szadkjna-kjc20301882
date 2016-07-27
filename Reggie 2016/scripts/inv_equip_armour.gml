@@ -5,7 +5,6 @@
 
 //See if an armour is already equipped:
 if global.inventory_armour[1]<>"ZZZZZ" {
- /*STUB - Notify the user that it can't be done*/
  return false;
  }
  else begin

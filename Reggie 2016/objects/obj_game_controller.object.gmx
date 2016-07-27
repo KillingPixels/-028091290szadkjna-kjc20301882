@@ -198,7 +198,7 @@ or instance_exists(obj_gui_journal)=true
 or instance_exists(obj_gui_barter)=true
 or instance_exists(obj_gui_repair)=true
 or instance_exists(obj_gui_pause)=true
-or instance_exists(obj_textbox)=true
+//or instance_exists(obj_textbox)=true //Dialogues happen in scenes, not pauses
  _dc=true
  else
   _dc=false;
@@ -842,6 +842,7 @@ if instance_exists(weaponHoldingPar) {
   else if weaponHoldingPar.b_state=1 {
    gui_draw_bar(spr_reload_bar,1,xx+17,yy+34,rld+1,true);
    gui_draw_bar(spr_reload_bar,0,xx+17,yy+34,rld,true);
+   cha_draw_channel_bar("Reloading...",rld);
    }    
  
  gui_draw_bar(spr_dur_bar,0,xx+17,yy+81,dur/dur_max,true);

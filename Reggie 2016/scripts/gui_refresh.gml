@@ -22,6 +22,6 @@ with (obj_game_controller) {
 
  gui_show_message("Window size updated.",c_black,true);
 
- //window_set_size(dW,dH); <-- To settings
+ //window_set_size(dW,dH); <-- To settings STUB
  
 }

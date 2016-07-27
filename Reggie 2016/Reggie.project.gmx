@@ -6,6 +6,7 @@
   <datafiles number="1" name="datafiles"/>
   <NewExtensions>
     <extension index="0">extensions\Mercury-2D Worlds and Lighting</extension>
+    <extension index="1">extensions\Turbo Print Parser</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -130,6 +131,9 @@
       <sprites name="Yes No">
         <sprite>sprites\spr_window_yes_no</sprite>
       </sprites>
+      <sprites name="Channel bar">
+        <sprite>sprites\spr_channel_bar</sprite>
+      </sprites>
     </sprites>
     <sprites name="World props">
       <sprite>sprites\spr_campfire</sprite>
@@ -144,6 +148,7 @@
       <sprite>sprites\spr_dead_relative</sprite>
       <sprite>sprites\spr_player_crawl</sprite>
       <sprite>sprites\spr_player_bug</sprite>
+      <sprite>sprites\spr_tom</sprite>
       <sprite>sprites\spr_enemy_sct</sprite>
       <sprite>sprites\spr_enemy_turta</sprite>
       <sprite>sprites\spr_primal_basic</sprite>
@@ -257,6 +262,7 @@
         <script>scripts\game_start_scene.gml</script>
         <script>scripts\game_end_scene.gml</script>
         <script>scripts\game_in_scene.gml</script>
+        <script>scripts\game_set_scene_camera.gml</script>
       </scripts>
       <scripts name="Terrain">
         <script>scripts\TerrainNotes.gml</script>
@@ -506,6 +512,11 @@
         <script>scripts\spl_tick.gml</script>
         <script>scripts\spl_draw_surface.gml</script>
         <script>scripts\spl_draw_point.gml</script>
+      </scripts>
+      <scripts name="Channel actions">
+        <script>scripts\cha_start.gml</script>
+        <script>scripts\cha_interrupt.gml</script>
+        <script>scripts\cha_draw_channel_bar.gml</script>
       </scripts>
       <scripts name="Saving / Loading">
         <script>scripts\game_save_checkpoint.gml</script>
@@ -920,11 +931,17 @@
         <script>scripts\TPP_execute_code.gml</script>
       </scripts>
       <scripts name="Underlying">
-        <script>scripts\tpp_print_line.gml</script>
-        <script>scripts\tpp_push.gml</script>
-        <script>scripts\tpp_pop_execute.gml</script>
-        <script>scripts\tpp_link_colour.gml</script>
-        <script>scripts\tpp_add_line_to_grid.gml</script>
+        <scripts name="Printing">
+          <script>scripts\tpp_print_line.gml</script>
+        </scripts>
+        <scripts name="Stack">
+          <script>scripts\tpp_push.gml</script>
+          <script>scripts\tpp_pop_execute.gml</script>
+        </scripts>
+        <scripts name="Utility">
+          <script>scripts\tpp_link_colour.gml</script>
+          <script>scripts\tpp_add_line_to_grid.gml</script>
+        </scripts>
       </scripts>
     </scripts>
     <scripts name="Documentation">
@@ -950,8 +967,8 @@
     <font>fonts\f_windows</font>
     <font>fonts\f_windows_small</font>
     <font>fonts\f_textbox_regular</font>
-    <font>fonts\f_textbox_italic</font>
     <font>fonts\f_textbox_bold</font>
+    <font>fonts\f_textbox_italic</font>
   </fonts>
   <objects name="objects">
     <object>objects\placeholderObj</object>
@@ -968,6 +985,8 @@
       <object>objects\obj_screen_fade</object>
       <object>objects\obj_screen_shake</object>
       <object>objects\obj_pickup</object>
+      <object>objects\obj_channel_bar</object>
+      <object>objects\obj_channel_bar_finished</object>
     </objects>
     <objects name="Interface">
       <objects name="Windows">
@@ -996,7 +1015,7 @@
       </objects>
       <objects name="Temp">
         <object>objects\obj_vendor_template</object>
-        <object>objects\dcAwesomeObj</object>
+        <object>objects\obj_tom</object>
       </objects>
     </objects>
     <objects name="Gameplay">

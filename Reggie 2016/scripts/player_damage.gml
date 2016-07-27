@@ -14,6 +14,9 @@ damage=argument0;
 //Reset combat timer:
 player_reset_combat_timer();
 
+//Interrupt channeling:
+cha_interrupt();
+
 //Knockback:
 object_knockback(player,(argument1 * player.mod_kbrs),(argument2 * sign(player.x-x) * player.mod_kbrs));
 
