@@ -223,11 +223,25 @@ if (selected&lt;&gt;"") {
      sett_free();
      
      if (selected=newgame) {
-      game_initialize(0);
-      room_goto_next();
+      //game_initialize(0);
+      //room_goto_next();
+      with (instance_create(0,0,obj_load_fade)) {
+        mode="new";
+        name="";
+        delay=90;
+        md=delay;
+        }
       }
-      else
-       game_load_checkpoint(selected);
+      else {
+       //game_load_checkpoint(selected);
+       with (instance_create(0,0,obj_load_fade)) {
+         mode="load";
+         name=selected;
+         delay=90;
+         md=delay;
+         }
+       }
+     instance_destroy(); 
     break;
     
    default:

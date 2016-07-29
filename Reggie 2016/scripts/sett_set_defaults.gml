@@ -42,8 +42,10 @@ sett_set_value("Anti-Alias","x0");
 sett_set_value("Interpolation","Off");
 sett_set_value("Smooth lighting","Off");
 sett_set_value("Dynamic Bloom","On");
+sett_set_value("Dynamic Decals","On");
 
 //Sound:
+sett_set_value("Reset to Defaults","0");
 sett_set_value("Master volume",100);
 
 //Misc. (Other):

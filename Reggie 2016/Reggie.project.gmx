@@ -180,6 +180,7 @@
       <sprite>sprites\spr_earth_slope_sm</sprite>
       <sprite>sprites\spr_earth_slope_se</sprite>
       <sprite>sprites\spr_hospital_wall</sprite>
+      <sprite>sprites\spr_dark_rock</sprite>
     </sprites>
     <sprites name="Effects">
       <sprites name="Particles">
@@ -250,6 +251,7 @@
         <script>scripts\key_to_string.gml</script>
         <script>scripts\key_int.gml</script>
         <script>scripts\HG_nearest_light_dist.gml</script>
+        <script>scripts\execute_string_delayed.gml</script>
         <scripts name="Armours">
           <script>scripts\armour_get_speed.gml</script>
           <script>scripts\armour_get_streq.gml</script>
@@ -600,7 +602,7 @@
           <script>scripts\bh_level1_script0.gml</script>
         </scripts>
       </scripts>
-      <scripts name="Player Weapons">
+      <scripts name="Weapons _Player_">
         <script>scripts\weapon_initialise.gml</script>
         <script>scripts\weapon_projectile_init.gml</script>
         <script>scripts\weapon_set_basics.gml</script>
@@ -615,61 +617,6 @@
         <script>scripts\weapon_amt_name.gml</script>
         <script>scripts\weapon_max_ammo.gml</script>
         <script>scripts\projectile_get_object.gml</script>
-      </scripts>
-    </scripts>
-    <scripts name="N String Parser v2_4">
-      <script>scripts\NSP_Documentation.gml</script>
-      <script>scripts\NSP_initialize.gml</script>
-      <script>scripts\NSP_free.gml</script>
-      <script>scripts\NSP_execute_string.gml</script>
-      <script>scripts\NSP_evaluate.gml</script>
-      <script>scripts\NSP_notify.gml</script>
-      <script>scripts\NSP_save.gml</script>
-      <script>scripts\NSP_execute_saved.gml</script>
-      <script>scripts\NSP_evaluate_saved.gml</script>
-      <script>scripts\NSP_free_saved.gml</script>
-      <scripts name="Underlying">
-        <script>scripts\nsp_execute_master.gml</script>
-        <script>scripts\nsp_execute_block.gml</script>
-        <script>scripts\nsp_execute_line.gml</script>
-        <script>scripts\nsp_execute_single.gml</script>
-        <script>scripts\nsp_execute_script.gml</script>
-        <script>scripts\nsp_get_constant.gml</script>
-        <script>scripts\nsp_convert_to_list.gml</script>
-        <script>scripts\nsp_list_parameters.gml</script>
-        <script>scripts\nsp_statement_positions.gml</script>
-        <script>scripts\nsp_list_remove.gml</script>
-        <script>scripts\nsp_build_grid.gml</script>
-        <script>scripts\nsp_grid_shift.gml</script>
-        <script>scripts\nsp_list_string.gml</script>
-        <script>scripts\nsp_evaluate_list.gml</script>
-        <script>scripts\nsp_evaluate_single.gml</script>
-        <script>scripts\nsp_evaluate_long.gml</script>
-        <script>scripts\nsp_evaluate_special_word.gml</script>
-        <script>scripts\nsp_variable_set.gml</script>
-        <script>scripts\nsp_variable_get.gml</script>
-        <script>scripts\nsp_variable_global_set.gml</script>
-        <script>scripts\nsp_variable_global_get.gml</script>
-        <script>scripts\nsp_dsm_set.gml</script>
-        <script>scripts\nsp_dsm_get.gml</script>
-        <script>scripts\nsp_is_special_word.gml</script>
-        <script>scripts\nsp_is_string.gml</script>
-        <script>scripts\nsp_is_number.gml</script>
-        <script>scripts\nsp_is_script.gml</script>
-        <script>scripts\nsp_is_asset.gml</script>
-        <script>scripts\nsp_is_variable.gml</script>
-        <script>scripts\nsp_is_dsm.gml</script>
-        <script>scripts\nsp_gm_nom.gml</script>
-        <script>scripts\nsp_src_token.gml</script>
-        <script>scripts\nsp_token_is_valid.gml</script>
-        <script>scripts\nsp_arithmetic_calculate.gml</script>
-        <script>scripts\nsp_comparison_calculate.gml</script>
-        <script>scripts\nsp_combination_calculate.gml</script>
-        <script>scripts\nsp_is_equal.gml</script>
-        <script>scripts\nsp_string_crop.gml</script>
-        <script>scripts\nsp_string_crop_ext.gml</script>
-        <script>scripts\nsp_string_find_last.gml</script>
-        <script>scripts\nsp_string_force.gml</script>
       </scripts>
     </scripts>
     <scripts name="Mercury Engine v1_1_3">
@@ -903,6 +850,61 @@
         </scripts>
       </scripts>
     </scripts>
+    <scripts name="N String Parser v2_4">
+      <script>scripts\NSP_Documentation.gml</script>
+      <script>scripts\NSP_initialize.gml</script>
+      <script>scripts\NSP_free.gml</script>
+      <script>scripts\NSP_execute_string.gml</script>
+      <script>scripts\NSP_evaluate.gml</script>
+      <script>scripts\NSP_notify.gml</script>
+      <script>scripts\NSP_save.gml</script>
+      <script>scripts\NSP_execute_saved.gml</script>
+      <script>scripts\NSP_evaluate_saved.gml</script>
+      <script>scripts\NSP_free_saved.gml</script>
+      <scripts name="Underlying">
+        <script>scripts\nsp_execute_master.gml</script>
+        <script>scripts\nsp_execute_block.gml</script>
+        <script>scripts\nsp_execute_line.gml</script>
+        <script>scripts\nsp_execute_single.gml</script>
+        <script>scripts\nsp_execute_script.gml</script>
+        <script>scripts\nsp_get_constant.gml</script>
+        <script>scripts\nsp_convert_to_list.gml</script>
+        <script>scripts\nsp_list_parameters.gml</script>
+        <script>scripts\nsp_statement_positions.gml</script>
+        <script>scripts\nsp_list_remove.gml</script>
+        <script>scripts\nsp_build_grid.gml</script>
+        <script>scripts\nsp_grid_shift.gml</script>
+        <script>scripts\nsp_list_string.gml</script>
+        <script>scripts\nsp_evaluate_list.gml</script>
+        <script>scripts\nsp_evaluate_single.gml</script>
+        <script>scripts\nsp_evaluate_long.gml</script>
+        <script>scripts\nsp_evaluate_special_word.gml</script>
+        <script>scripts\nsp_variable_set.gml</script>
+        <script>scripts\nsp_variable_get.gml</script>
+        <script>scripts\nsp_variable_global_set.gml</script>
+        <script>scripts\nsp_variable_global_get.gml</script>
+        <script>scripts\nsp_dsm_set.gml</script>
+        <script>scripts\nsp_dsm_get.gml</script>
+        <script>scripts\nsp_is_special_word.gml</script>
+        <script>scripts\nsp_is_string.gml</script>
+        <script>scripts\nsp_is_number.gml</script>
+        <script>scripts\nsp_is_script.gml</script>
+        <script>scripts\nsp_is_asset.gml</script>
+        <script>scripts\nsp_is_variable.gml</script>
+        <script>scripts\nsp_is_dsm.gml</script>
+        <script>scripts\nsp_gm_nom.gml</script>
+        <script>scripts\nsp_src_token.gml</script>
+        <script>scripts\nsp_token_is_valid.gml</script>
+        <script>scripts\nsp_arithmetic_calculate.gml</script>
+        <script>scripts\nsp_comparison_calculate.gml</script>
+        <script>scripts\nsp_combination_calculate.gml</script>
+        <script>scripts\nsp_is_equal.gml</script>
+        <script>scripts\nsp_string_crop.gml</script>
+        <script>scripts\nsp_string_crop_ext.gml</script>
+        <script>scripts\nsp_string_find_last.gml</script>
+        <script>scripts\nsp_string_force.gml</script>
+      </scripts>
+    </scripts>
     <scripts name="Turbo Print Parser v1_0">
       <script>scripts\TPP_Documentation.gml</script>
       <script>scripts\TPP_initialize.gml</script>
@@ -973,20 +975,26 @@
   <objects name="objects">
     <object>objects\placeholderObj</object>
     <objects name="Controllers">
-      <object>objects\obj_game_controller</object>
-      <object>objects\obj_hg_controller</object>
-      <object>objects\obj_pfd_controller</object>
-      <object>objects\obj_scenery</object>
-      <object>objects\obj_camera</object>
-      <object>objects\spr_camera_foot</object>
-      <object>objects\obj_heart_attack</object>
-      <object>objects\obj_ha_delayed</object>
-      <object>objects\obj_screen_flash</object>
-      <object>objects\obj_screen_fade</object>
-      <object>objects\obj_screen_shake</object>
-      <object>objects\obj_pickup</object>
-      <object>objects\obj_channel_bar</object>
-      <object>objects\obj_channel_bar_finished</object>
+      <objects name="Main">
+        <object>objects\obj_game_controller</object>
+        <object>objects\obj_hg_controller</object>
+        <object>objects\obj_pfd_controller</object>
+        <object>objects\obj_scenery</object>
+        <object>objects\obj_camera</object>
+        <object>objects\obj_heart_attack</object>
+      </objects>
+      <objects name="Support">
+        <object>objects\spr_camera_foot</object>
+        <object>objects\obj_ha_delayed</object>
+        <object>objects\obj_screen_flash</object>
+        <object>objects\obj_screen_fade</object>
+        <object>objects\obj_screen_shake</object>
+        <object>objects\obj_pickup</object>
+        <object>objects\obj_channel_bar</object>
+        <object>objects\obj_channel_bar_finished</object>
+        <object>objects\obj_action_delayed</object>
+        <object>objects\obj_load_fade</object>
+      </objects>
     </objects>
     <objects name="Interface">
       <objects name="Windows">
@@ -1042,6 +1050,7 @@
       </objects>
       <objects name="Terrain objects">
         <object>objects\obj_hg_black_area</object>
+        <object>objects\obj_hg_dark_rock</object>
         <object>objects\obj_hg_brick_wall</object>
         <object>objects\obj_hg_earth_block</object>
         <object>objects\obj_hg_earth_slope</object>
@@ -1096,15 +1105,17 @@
         <object>objects\obj_player_hospital</object>
         <object>objects\obj_fsm_hospital</object>
         <object>objects\obj_hospital_dead_relative</object>
+        <object>objects\obj_hospital_nurse</object>
+        <object>objects\obj_hospital_raskal</object>
       </objects>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_initialize</room>
     <room>rooms\room_menu</room>
+    <room>rooms\room_hospital</room>
     <room>rooms\room_demo</room>
     <room>rooms\room_cemetary</room>
-    <room>rooms\room_hospital</room>
     <room>rooms\room_forest_precapture</room>
     <room>rooms\room_HQ_mission_brief</room>
   </rooms>

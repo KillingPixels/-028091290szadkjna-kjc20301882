@@ -69,7 +69,7 @@ global.sett_map=ds_map_create();
   sett_desc_to_last("The rate at which the letters appear in the textbox during conversations.");
  
  //Graphics:
- global.sett_graphics=8;
+ global.sett_graphics=9;
  sett_define_value("GUI Scale",SETT_TYPE.selection,SETT_GROUP.graphics,"100%","125%","150%","175%","200%");
   sett_desc_to_last("Determines size of the GUI elements.");
  sett_define_value("Info Box Opacity",SETT_TYPE.percent_scale,SETT_GROUP.graphics,0,100);
@@ -86,6 +86,8 @@ global.sett_map=ds_map_create();
   sett_desc_to_last("Creates more gentle gradients with lighting but it can cause a terrible slow-down with bad graphic cards (especially integrated).");
  sett_define_value("Dynamic Bloom",SETT_TYPE.toggle,SETT_GROUP.graphics,"On","Off");
   sett_desc_to_last("::");
+ sett_define_value("Dynamic Decals",SETT_TYPE.toggle,SETT_GROUP.graphics,"On","Off");
+  sett_desc_to_last("::");
  
  //Sound:
  global.sett_sound=1;
@@ -93,11 +95,30 @@ global.sett_map=ds_map_create();
   sett_desc_to_last("Volume for everything.");
  
  //Misc. (Other):
- global.sett_misc=1;
+ global.sett_misc=2;
  sett_define_value("Tooltip position",SETT_TYPE.toggle,SETT_GROUP.misc,"Cursor","Fixed");
   sett_desc_to_last("Whether the tooltips will be drawn next to the cursor or in a fixed place.");
+ sett_define_value("Reset to Defaults",SETT_TYPE.toggle,SETT_GROUP.misc,"0","1");
+  sett_desc_to_last("Revert all settings back to their original values.");
  
 //DEFAULTS:
 sett_set_defaults();
-//sett_update_controls();
-//sett_update_settings();
+
+ini_open("Settings.ini");
+
+if (!ini_section_exists("SETTINGS")) {
+  
+  ini_write_string("SETTINGS","Settings",sett_write());
+  }
+  else {
+    sett_read(ini_read_string("SETTINGS","Settings",""));
+    }
+    
+ini_close();
+
+
+
+
+
+
+

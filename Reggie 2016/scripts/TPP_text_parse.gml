@@ -521,6 +521,7 @@ switch (argument4) {
 
 l[|TPP_LIST.maxheight]=tot_h;
 
+l[|TPP_LIST.def_font]=fnt;
 l[|TPP_LIST.def_width]=width;
 l[|TPP_LIST.def_sep]=sep;
 l[|TPP_LIST.def_just]=pad;

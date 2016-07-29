@@ -44,6 +44,10 @@ switch (argument0) begin
  case "make_colour_rgb":
    return make_colour_rgb(argument1[0],argument1[1],argument1[2]);
   
+ case "show_debug_overlay":
+   show_debug_overlay(argument1[0]);
+   return 0;
+   
  default:
    if asset_get_type(argument0)<>asset_script {
     NSP_notify("SCRIPT: nsp_execute_script. ERROR: Script not supported ( "+argument0+" ).");

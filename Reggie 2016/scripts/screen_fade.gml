@@ -4,7 +4,7 @@
 */
 var a;
 
-a=instance_create((global.player_obj_id).x,(global.player_obj_id).y,obj_screen_fade);
+a=instance_create(0,0,obj_screen_fade);
 
 a._colour=argument0;
 a._duration=argument1;

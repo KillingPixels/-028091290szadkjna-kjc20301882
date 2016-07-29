@@ -151,7 +151,7 @@
     <instance objName="obj_lamp_post" x="2336" y="480" name="inst_22DC07CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lamp_post" x="2592" y="480" name="inst_34A10A6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_campfire" x="911" y="440" name="inst_83029681" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tom" x="448" y="320" name="inst_EA2F88C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tom" x="496" y="320" name="inst_EA2F88C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_earth_block" x="368" y="336" name="inst_E0DEA258" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_basic" x="1408" y="288" name="inst_F31A76FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pfd_controller" x="96" y="0" name="inst_32E010EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

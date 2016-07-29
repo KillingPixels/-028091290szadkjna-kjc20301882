@@ -2,7 +2,7 @@
 <room>
   <caption></caption>
   <width>1280</width>
-  <height>360</height>
+  <height>500</height>
   <vsnap>16</vsnap>
   <hsnap>16</hsnap>
   <isometric>0</isometric>
@@ -41,7 +41,7 @@
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="obj_player_hospital" xview="0" yview="0" wview="640" hview="360" xport="0" yport="0" wport="960" hport="540" hborder="300" vborder="300" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="360" xport="0" yport="0" wport="960" hport="540" hborder="300" vborder="300" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -57,19 +57,20 @@
     <instance objName="placeholderObj" x="128" y="176" name="inst_1BF8B738" locked="0" code="/* Designer's Notes 1/1&#xA;&#xA;SUMMARY: Intro to game. Small interactive cut-scene followed by a few dialogue sequences&#xA;and ends with departure of level.&#xA;&#xA;DETAILS:&#xA;The game begins with the player immobile in a bed. There's a small fade-in, and the colors &#xA;which begins as an intense, blinding white, slowly devolves into a dingy gray. When the &#xA;color settles, an animation plays where the player falls out of bed. They crawl to the door&#xA;where a dead relative of the player appears briefly before the player passes out. When&#xA;they awake they're treated to a few conversations (while immobile in bed) as various&#xA;parties come and go. At the end of these conversations, we load the next level.&#xA;&#xA;GAMEPLAY: After the fade-in the player crawls out of bed until reaching the door. Other &#xA;than that they'll be immobile for this level.&#xA;&#xA;MUSIC:&#xA;Something that starts out surreal, perhaps frightning, but settles into a mellow groove&#xA;with tinges of agression.&#xA;&#xA;ART: We'll go for the look of a typical hospital room. Nothing too special." scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall_lamp" x="192" y="160" name="inst_DA42EFCE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall_lamp" x="512" y="160" name="inst_0C249AD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_hg_black_area" x="640" y="336" name="inst_41F530BD" locked="0" code="" scaleX="40" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="obj_hg_black_area" x="640" y="32" name="inst_7639478E" locked="0" code="" scaleX="40" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="obj_hg_black_area" x="32" y="176" name="inst_8D9F38D5" locked="0" code="" scaleX="2" scaleY="7" colour="4294967295" rotation="0"/>
-    <instance objName="obj_hg_black_area" x="1248" y="176" name="inst_227DA82D" locked="0" code="" scaleX="2" scaleY="7" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player_hospital" x="288" y="224" name="inst_F108454E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player_hospital" x="208" y="240" name="inst_F108454E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_brick_wall" x="640" y="80" name="inst_6139C3D3" locked="0" code="" scaleX="36" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_brick_wall" x="640" y="272" name="inst_A3B90ACA" locked="0" code="" scaleX="36" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fsm_hospital" x="144" y="96" name="inst_D6A045E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_brick_wall" x="80" y="176" name="inst_BFB7FFF1" locked="0" code="" scaleX="1" scaleY="5" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_brick_wall" x="1200" y="176" name="inst_C100B7A5" locked="0" code="" scaleX="1" scaleY="5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_hospital_door" x="688" y="160" name="inst_0B989EB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_hospital_dead_relative" x="704" y="224" name="inst_CAA79B09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_hospital_bed" x="195" y="229" name="inst_3E5546CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_hospital_door" x="736" y="208" name="inst_0B989EB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_hospital_bed" x="190" y="229" name="inst_3E5546CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_hg_dark_rock" x="640" y="384" name="inst_563B9388" locked="0" code="" scaleX="40" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="obj_hg_dark_rock" x="640" y="32" name="inst_E62D47C7" locked="0" code="" scaleX="40" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_hg_dark_rock" x="1248" y="176" name="inst_C066D8D2" locked="0" code="" scaleX="2" scaleY="7" colour="4294967295" rotation="0"/>
+    <instance objName="obj_hg_dark_rock" x="32" y="176" name="inst_CF224040" locked="0" code="" scaleX="2" scaleY="7" colour="4294967295" rotation="0"/>
+    <instance objName="obj_hospital_dead_relative" x="688" y="224" name="inst_4C42CBE3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_pfd_controller" x="160" y="96" name="inst_78582C84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
