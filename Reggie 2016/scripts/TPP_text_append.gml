@@ -3,7 +3,7 @@
 
 Appends text to an already parsed text / grid. Will start
 in a new line and use settings from the previous
-preparations.
+preparations. This is a very slow function.
 
 Returns: n/a
 
@@ -13,7 +13,7 @@ var i,g,l,t,target,c_h;
 target=argument0;
 l=target[#0,0];
 
-g=TPP_text_parse(argument1,0,0,0,0,0,l[|TPP_LIST.def_width],l[|TPP_LIST.def_sep],l[|TPP_LIST.def_just]);
+g=TPP_text_parse(argument1,0,0,l[|TPP_LIST.def_font],0,l[|TPP_LIST.def_width],l[|TPP_LIST.def_sep],l[|TPP_LIST.def_just]);
 
 for (i=1; i<ds_grid_height(g); i+=1) {
 

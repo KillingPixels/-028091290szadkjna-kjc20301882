@@ -1,4 +1,4 @@
-///TPP_text_parse(String, Colour, Alpha, Font, spr_vAlign, centerLines, Width, Sep, Justify)
+///TPP_text_parse(String, Colour, Alpha, Font, lineAlignment, Width, Sep, Justify)
 /*
 
 Prepares a string to be printed with more complex printing
@@ -12,9 +12,9 @@ var line_s,line_l,line_w,line_h,word_s,word_w,word_l,word_h;
 
 work_str=argument0;
 fnt=argument3;
-width=argument6;
-sep=argument7;
-pad=argument8;
+width=argument5;
+sep=argument6;
+pad=argument7;
 
 jt=global.TPP_JT;
 
@@ -231,7 +231,7 @@ for (i=1; i<=string_length(work_str); i+=1) {
           //Add sprite word:
           if (line_w+sprite_get_width(ind)<=width) {
           
-            word_s+="[spr:"+vn+"]";
+            word_s+="[spe:"+vn+"]";
             word_l+=1;
             word_w+=sprite_get_width(ind);
             word_h=max(word_h,sprite_get_height(ind));             
@@ -245,7 +245,7 @@ for (i=1; i<=string_length(work_str); i+=1) {
               tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
               tot_h=tot_h+v;
               
-              line_s="[spr:"+vn+"]";
+              line_s="[spe:"+vn+"]";
               line_l=1;
               line_w=sprite_get_width(ind);
               line_h=sprite_get_height(ind);
@@ -417,10 +417,12 @@ for (i=1; i<=string_length(work_str); i+=1) {
   if (word_w>=width) {
   
     //Break line, add to next line:
-    p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
-    if (sep==-1) v=line_h; else v=sep;
-    tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
-    tot_h=tot_h+v;
+    if (line_l<>0) {
+      p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
+      if (sep==-1) v=line_h; else v=sep;    
+      tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
+      tot_h=tot_h+v;
+      }
               
     line_s=word_s;
     line_l=word_l;
@@ -497,10 +499,29 @@ l=ds_list_create();
 l[|TPP_LIST.colour]=argument1;
 l[|TPP_LIST.alpha]=argument2;
 l[|TPP_LIST.font]=argument3;
-l[|TPP_LIST.spr_valign]=argument4;
-l[|TPP_LIST.centerlines]=argument5;
+
+switch (argument4) {
+
+  case fa_top:
+    l[|TPP_LIST.linealign]=0;
+    break;
+    
+  case fa_center:
+    l[|TPP_LIST.linealign]=0.5;
+    break;
+    
+  case fa_bottom:
+    l[|TPP_LIST.linealign]=1;
+    break;
+    
+  default:
+    break;
+
+  }
+
 l[|TPP_LIST.maxheight]=tot_h;
 
+l[|TPP_LIST.def_font]=fnt;
 l[|TPP_LIST.def_width]=width;
 l[|TPP_LIST.def_sep]=sep;
 l[|TPP_LIST.def_just]=pad;

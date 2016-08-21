@@ -52,11 +52,18 @@ max_rows=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>//Update settings:
 if (room&lt;&gt;room_menu)
  sett_update_settings();
 
 sett_update_controls();
+
+//Write to INI:
+ini_open("Settings.ini");
+
+ini_write_string("SETTINGS","Settings",sett_write());
+
+ini_close();
 </string>
           </argument>
         </arguments>

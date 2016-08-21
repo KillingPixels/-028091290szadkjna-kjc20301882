@@ -22,9 +22,9 @@ enum TPP_LIST {
   colour,
   alpha,
   font,
-  spr_valign,
-  centerlines,
+  linealign,
   maxheight,
+  def_font,
   def_width,
   def_sep,
   def_just

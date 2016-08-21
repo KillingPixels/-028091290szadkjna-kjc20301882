@@ -17,6 +17,7 @@
    -125 Mercury controller
    -105 GUI window objects
    -100 Main game controller*
+   -099 Channel bar
    ...
    -001 Player object
    ...
@@ -28,19 +29,20 @@
      than 100.
     
 >>To do:
-
+  
+  Fullscreen setting
+  Window size setting
   Enemy animations
-  Bigger textbox
   Setting to turn splat surfaces on/off
-  Shift / stamina
-  !!!Fix Mercury (light_create double list creation)
-  Rewrite screen_shake
-  ~Functions to start and end cutscenes, and to move the camera while in them.
+  !!!Fix Mercury (light_create double list creation)  
   ~Slabs...
   Sound (sfx system)
-  Inventory debuff
-  Load settings in game_init or after it
   
+  -Polish:
+   Fix finished channel bar colour
+   Rewrite screen_shake
+   Bigger textbox
+   
   -AI commands:
    ai_force_animation()
 

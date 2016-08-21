@@ -68,6 +68,7 @@ enum ABSEND {
 
  doNothing=0,
  returnToMenu,
+ roomGoto,
  endGame
 
  };
