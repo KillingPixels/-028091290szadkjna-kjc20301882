@@ -70,6 +70,7 @@ _heartFrame=0;
 display_set_gui_maximise(gui_get_scale(),gui_get_scale(),0,0);
 _string="HG_world_lighting_set_ambient(-1,0.5,make_colour_rgb(255,255,255));";
 _reloadStatePrev=0;
+_roomGoto=room_menu;
 
 
 
@@ -609,7 +610,6 @@ if (surface_exists(auxSurf) and surface_exists(application_surface)) {
 switch (global.abs_end_action) begin
 
  case ABSEND.doNothing:
-   exit;
   break;
   
  case ABSEND.returnToMenu:   
@@ -618,10 +618,19 @@ switch (global.abs_end_action) begin
    room_goto(room_menu); 
   break;
   
+ case ABSEND.roomGoto:
+   //game_free();   
+   global.abs_end_action=0;
+   room_goto(_roomGoto);
+  break;
+  
  case ABSEND.endGame:
    game_free();
    game_end();
   break; 
+  
+ default:
+  break;
 
 end;
 </string>

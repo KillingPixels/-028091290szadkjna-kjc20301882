@@ -38,6 +38,12 @@ _grounded=0;
 _climb=PLAYER.climb;
 _aircontrol=PLAYER.airControl/10;
 
+_maxspeed=PLAYER.topHorzSpeed;
+_acceleration=PLAYER.hcMovement/10;
+_jumpPower=PLAYER.jumpPower;
+_friction=1-PLAYER.friction/100;
+_gravity=PLAYER.gravity/10;
+
 //Movement Settings:
 _tapTimer=PLAYER.rollTapSpeed; // double-tap counter
 _rollTimer=0; // how long left to roll

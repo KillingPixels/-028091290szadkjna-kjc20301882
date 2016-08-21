@@ -51,7 +51,7 @@ eyelidSurf=-4;
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>obj_fsm_hospital</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
@@ -131,8 +131,8 @@ switch (state) begin
     //Eyes close as they approach the door
     //Duration: n/a
     screen_set_bloom_override(0.5,0.5);
-    eyesClosed=max(eyesClosed,0.33+0.66*((global.player_obj_id).x-300)/400);
-    if (obj_hospital_dead_relative._collision==true) {
+    eyesClosed=max(eyesClosed,0.33+0.61*((global.player_obj_id).x-300)/400);
+    if (obj_hospital_richard._collision==true) {
       counter=0;
       state+=1;
       }
@@ -157,6 +157,7 @@ switch (state) begin
     else if (counter==180) {
       //Play thud sound
       eyesClosed=1;
+      (global.player_obj_id).x+=200;
       game_start_scene(true);
       game_set_scene_camera(0,0);
       instance_create(252,224,obj_hospital_nurse);
@@ -185,6 +186,8 @@ switch (state) begin
       eyesClosed=0.36+0.65*(counter)/90;
       }
     else if (counter==90) {
+      obj_hospital_raskal.x-=20;//obj_hospital_nurse.x;
+      obj_hospital_window.image_index+=1;
       remove(obj_hospital_nurse);
       }
     else if (counter&lt;210) {
@@ -199,10 +202,63 @@ switch (state) begin
     else if (counter==310) {
       obj_hospital_raskal._dialogue=true;
       }
+    else if (!txt_obj_exists()) {
+      game_start_scene(true);
+      counter=0;
+      state+=1;    
+      }
+    break;
+    
+  case 6:
+    //Raskal walks off screen to the right and
+    //comes back with a doctor; conversation
+    if (instance_exists(obj_hospital_doctor) &amp;&amp; obj_hospital_doctor.a==2) {
+      game_start_scene(true);
+      obj_hospital_raskal.a=7;
+      counter=0;
+      state+=1;      
+      }
+    break;
+    
+  case 7:
+    //Raskal goes away; the doctor continues talking
+    if (obj_hospital_raskal.x&gt;=720) {
+      obj_hospital_doctor._dialogue=2;
+      obj_hospital_raskal.a+=1;
+      counter=0;
+      state+=1;
+      }
+    break;
+    
+  case 8:
+    //Conversation with the doctor has just ended,
+    //He goes away for good. Raskal comes back.    
+    if (!txt_obj_exists()) {
+      game_start_scene(true);
+      obj_hospital_doctor.a+=1;
+      obj_hospital_raskal.a+=1;
+      counter=0;
+      state+=1;
+      }
+    break;
+    
+  case 9:
+    if (!txt_obj_exists() and obj_hospital_raskal.a==10) {
+      game_start_scene(true);
+      obj_hospital_raskal.a=7;
+      counter=0;
+      state+=1;
+      }
+    break;
+    
+  case 10:
+    //Fade out, end of level
+    screen_fade(c_black,181,0);
+    execute_string_delayed("game_change_room(); game_end_scene();",180);
+    state+=1;
     break;
     
   default:
-    instance_destroy();
     break;
 
 end;

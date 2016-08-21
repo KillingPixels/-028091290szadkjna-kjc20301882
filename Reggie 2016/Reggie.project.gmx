@@ -142,6 +142,7 @@
       <sprite>sprites\spr_wall_lamp</sprite>
       <sprite>sprites\spr_hospital_door</sprite>
       <sprite>sprites\spr_hospital_bed</sprite>
+      <sprite>sprites\obj_window</sprite>
     </sprites>
     <sprites name="Bodies">
       <sprite>sprites\spr_player_run</sprite>
@@ -189,6 +190,7 @@
       <sprites name="Lights">
         <sprite>sprites\spr_light_diffuse</sprite>
         <sprite>sprites\spr_light_torch</sprite>
+        <sprite>sprites\spr_light_window</sprite>
       </sprites>
       <sprites name="Other">
         <sprite>sprites\spr_sonic_boom</sprite>
@@ -265,6 +267,7 @@
         <script>scripts\game_end_scene.gml</script>
         <script>scripts\game_in_scene.gml</script>
         <script>scripts\game_set_scene_camera.gml</script>
+        <script>scripts\game_change_room.gml</script>
       </scripts>
       <scripts name="Terrain">
         <script>scripts\TerrainNotes.gml</script>
@@ -1102,11 +1105,15 @@
         </objects>
       </objects>
       <objects name="Level specific">
-        <object>objects\obj_player_hospital</object>
-        <object>objects\obj_fsm_hospital</object>
-        <object>objects\obj_hospital_dead_relative</object>
-        <object>objects\obj_hospital_nurse</object>
-        <object>objects\obj_hospital_raskal</object>
+        <objects name="Hospital">
+          <object>objects\obj_fsm_hospital</object>
+          <object>objects\obj_player_hospital</object>
+          <object>objects\obj_hospital_richard</object>
+          <object>objects\obj_hospital_nurse</object>
+          <object>objects\obj_hospital_raskal</object>
+          <object>objects\obj_hospital_doctor</object>
+          <object>objects\obj_hospital_window</object>
+        </objects>
       </objects>
     </objects>
   </objects>

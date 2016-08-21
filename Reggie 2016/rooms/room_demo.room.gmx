@@ -100,8 +100,8 @@
     <instance objName="platformParObj" x="1472" y="352" name="inst_EA6E073A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="platformParObj" x="1504" y="352" name="inst_48F9BA06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_earth_block" x="16" y="128" name="inst_C3FCAC49" locked="0" code="" scaleX="1" scaleY="6" colour="4294967295" rotation="0"/>
-    <instance objName="obj_scenery" x="64" y="0" name="inst_445711E7" locked="0" code="//*** AMBIENT SETUP: ***&#xA;var _red,_green,_blue,_alpha,_bloom,col;&#xA;&#xA;_red=155;&#xA;_green=155;&#xA;_blue=255;&#xA;_alpha=0.25;&#xA;&#xA;_bloom=1;&#xA;  &#xA;col=make_colour_rgb(_red,_green,_blue);&#xA;HG_world_lighting_set_ambient(-1,_alpha,col);&#xA;&#xA;global.ambient_alpha=_alpha;&#xA;global.ambient_colour=col;&#xA;global.ambient_bloom=_bloom;&#xA;&#xA;//*** BACKGROUND SETUP: ***&#xA;_backgrounds[0,0]=bg_2;&#xA;_backgrounds[0,1]=0.75;&#xA;&#xA;_backgrounds[1,0]=bg_1;&#xA;_backgrounds[1,1]=0.5;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="96" y="192" name="inst_45EBB1E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_scenery" x="64" y="0" name="inst_445711E7" locked="0" code="//*** AMBIENT SETUP: ***&#xA;var _red,_green,_blue,_alpha,_bloom,col;&#xA;&#xA;_red=155;&#xA;_green=155;&#xA;_blue=255;&#xA;_alpha=0.75;&#xA;&#xA;_bloom=1;&#xA;  &#xA;col=make_colour_rgb(_red,_green,_blue);&#xA;HG_world_lighting_set_ambient(-1,_alpha,col);&#xA;&#xA;global.ambient_alpha=_alpha;&#xA;global.ambient_colour=col;&#xA;global.ambient_bloom=_bloom;&#xA;&#xA;//*** BACKGROUND SETUP: ***&#xA;_backgrounds[0,0]=bg_2;&#xA;_backgrounds[0,1]=0.75;&#xA;&#xA;_backgrounds[1,0]=bg_1;&#xA;_backgrounds[1,1]=0.5;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="96" y="176" name="inst_45EBB1E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_earth_block" x="720" y="256" name="inst_93A13564" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_earth_block" x="688" y="288" name="inst_37FA4411" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_earth_block" x="656" y="304" name="inst_5229099C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -143,7 +143,7 @@
     <instance objName="obj_hg_earth_slab" x="656" y="272" name="inst_397478A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_earth_slab" x="912" y="240" name="inst_DA923149" locked="0" code="" scaleX="1" scaleY="-1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_earth_slab" x="1136" y="272" name="inst_0587E251" locked="0" code="" scaleX="1" scaleY="-1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_lamp_post" x="272" y="256" name="inst_FBB37F2A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lamp_post" x="320" y="256" name="inst_FBB37F2A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lamp_post" x="528" y="256" name="inst_AF607369" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lamp_post" x="1680" y="224" name="inst_ABFB146F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lamp_post" x="1584" y="256" name="inst_770A78C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -151,9 +151,8 @@
     <instance objName="obj_lamp_post" x="2336" y="480" name="inst_22DC07CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lamp_post" x="2592" y="480" name="inst_34A10A6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_campfire" x="911" y="440" name="inst_83029681" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tom" x="496" y="320" name="inst_EA2F88C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tom" x="272" y="320" name="inst_EA2F88C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hg_earth_block" x="368" y="336" name="inst_E0DEA258" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_enemy_basic" x="1408" y="288" name="inst_F31A76FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pfd_controller" x="96" y="0" name="inst_32E010EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>

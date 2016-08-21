@@ -30,6 +30,8 @@
     
 >>To do:
   
+  Fullscreen setting
+  Window size setting
   Enemy animations
   Setting to turn splat surfaces on/off
   !!!Fix Mercury (light_create double list creation)  
