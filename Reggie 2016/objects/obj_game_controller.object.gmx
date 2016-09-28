@@ -67,10 +67,11 @@ window_set_min_width(320*2);
 _mouseHudPos=0;
 _hudOffset=1.5;
 _heartFrame=0;
-display_set_gui_maximise(gui_get_scale(),gui_get_scale(),0,0);
+//display_set_gui_maximise(gui_get_scale(),gui_get_scale(),0,0);
 _string="HG_world_lighting_set_ambient(-1,0.5,make_colour_rgb(255,255,255));";
 _reloadStatePrev=0;
 _roomGoto=room_menu;
+sett_update_settings();
 
 
 
@@ -256,7 +257,8 @@ if (_dc=false) {
 
 if !(_dc) {
 
- if keyboard_check_pressed(userControls[KEYBOARD.pause])=true
+ if (keyboard_check_pressed(userControls[KEYBOARD.pause])==true and
+     !txt_obj_exists()) 
   instance_create(x,y,obj_gui_pause);
   
  }
@@ -1143,7 +1145,7 @@ if (_windowW_1==_windowW_2 or _windowH_1==_windowH_2) and
           <argument>
             <kind>1</kind>
             <string>///Splats &amp; other
-spl_draw_surface(view_xview,view_yview);
+spl_draw_system(view_xview,view_yview);
 
 /*draw_set_alpha(0.35);
 mp_grid_draw(global.pfd_grid);

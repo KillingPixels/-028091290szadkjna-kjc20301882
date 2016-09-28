@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>_alpha=1;
-_colour=c_green;
+image_blend=c_green;
 </string>
           </argument>
         </arguments>
@@ -80,11 +80,11 @@ if (_alpha&lt;=0)
 xx=gui_width()/2;
 yy=32;
 
-draw_sprite_ext(spr_channel_bar,0,xx,yy,1,1,0,_colour,_alpha);
+draw_sprite_ext(spr_channel_bar,0,xx,yy,1,1,0,image_blend,_alpha);
 
 var w=sprite_get_width(spr_channel_bar);
 var h=sprite_get_height(spr_channel_bar);
-draw_sprite_part_ext(spr_channel_bar,1,0,0,w,h,xx-w/2,yy-h/2,1,1,_colour,_alpha);
+draw_sprite_part_ext(spr_channel_bar,1,0,0,w,h,xx-w/2,yy-h/2,1,1,image_blend,_alpha);
 </string>
           </argument>
         </arguments>

@@ -96,40 +96,6 @@ _camy = y-view_hview[0]/2;
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///STUB - Hazard damage
-/*if (place_free_obj(x, y, harmfulPar, false) &gt; 0)
-{
-    if (_isInHarmful == 0)
-    {
-        screen_flash(c_red, 0.1);
-        _isInHarmful = HARMFUL_OBJ.flashDelay;
-        player_damage(HARMFUL_OBJ.damage, 0,0);
-    }
-    else
-        _isInHarmful--;
-}
-else
-    _isInHarmful = 0;*/
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>408</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -229,7 +195,8 @@ if !(global.scene_active) begin
  
  if _health&lt;=0 {
   _health=0;
-  fade_trigger_scr(c_black,"player_died_scr",false);
+  //fade_trigger_scr(c_black,"player_died_scr",false);
+  show_message("You have died.");
   }
   else if _health&gt;PLAYER.topHealth
    _health=PLAYER.topHealth; 
@@ -775,7 +742,8 @@ draw_text_ext(mouse_x,mouse_y,s,16,999);*/
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !mouse_check_button(mb_middle) exit;
+            <string>///Splat test
+if !mouse_check_button(mb_middle) exit;
 
 spl_draw_point(mouse_x-view_xview,mouse_y-view_yview);
 </string>

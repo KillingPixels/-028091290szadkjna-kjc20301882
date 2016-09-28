@@ -115,23 +115,23 @@ if (_dialogue==2) {
 
   var s;
   
-  s[0]="You see Raskal sitting in a chair next to you.";
-  s[1]="I thought I had died and made it to heaven until I saw you and felt "+
-       "these restraints on me: if this is hell I'm disappointed.";
-  s[2]="Here is hell enough for now, uncle. It's good to see you again.";
-  s[3]="Yes, despite my joke you're a fine sight for resurrected eyes. Not only "+
-       "did you sneak in another inch or two of height; you look just like your "+
-       "father in this light.";
-  s[4]="It must be the light then. Everyone in the service says I look just like you.";
-  s[5]="We can talk more about him later. Your doctor told me to fetch him the moment "+
-       "you came to for longer than ten seconds. I'll be right back."; 
+  s[0]="So, how long will you be in for?";
+  s[1]="Only the amount of time it takes for someone to teach one of these nurses to "+
+       "write discharge papers.";
+  s[2]="You're getting out today?";
+  s[3]="Yes, and I'm to return to active duty immediately.";
+  s[4]="Then it looks like we'll be working together; I'm to join you on your next "+
+       "assignment. If you're sure that you're able, we have a meeting with our superiors "+
+       "before we depart tonight.";  
+  s[5]="Fine, but I want to visit Richard one last time.";
+  s[6]="Really? We don't have much time.... I'll accompany you.";
   
   txt_begin();
   
     txt_add(s[0],0,0,s[1]);
      txt_add(s[2],0,0,s[3]);
-      txt_add(s[4],0,0,"That's a pity. Richard was-");
-       txt_add(s[5],0,0,"[End\]{End}");
+      txt_add(s[4],0,0,s[5]);
+       txt_add(s[6],0,0,"[End\]{End}");
        
   txt_interface_open(spr_portrait_template,"Reggie",spr_portrait_template,"Raskal",0,0);
 

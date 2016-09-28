@@ -1,8 +1,8 @@
 ///TPP_define_local()
 /*
 
-Adds definitions local to this project.
-(Reggie Burning)
+  Adds definitions local to this project.
+  (Reggie Burning)
 
 */
 

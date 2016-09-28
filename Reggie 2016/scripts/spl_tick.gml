@@ -4,6 +4,8 @@
 */
 var xx,yy,surf1,surf2,t;
 
+if (!global.SPLAT_ENABLED) exit;
+
 surf1=global.SPLAT_SURF_1;
 surf2=global.SPLAT_SURF_2;
 
