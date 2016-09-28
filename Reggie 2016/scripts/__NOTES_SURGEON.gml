@@ -30,18 +30,16 @@
     
 >>To do:
   
-  Fullscreen setting
+  Capitalize setting names
+  Free entire current room in roomGoto ABS_END
   Window size setting
   Enemy animations
   Setting to turn splat surfaces on/off
-  !!!Fix Mercury (light_create double list creation)  
-  ~Slabs...
   Sound (sfx system)
   
   -Polish:
    Fix finished channel bar colour
    Rewrite screen_shake
-   Bigger textbox
    
   -AI commands:
    ai_force_animation()

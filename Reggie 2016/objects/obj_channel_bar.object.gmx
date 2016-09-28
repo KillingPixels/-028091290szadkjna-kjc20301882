@@ -63,9 +63,9 @@ _arg[0]=-1;
 a=instance_create(x,y,obj_channel_bar_finished);
 
 if (_counter&gt;=_duration)
-  a._colour=c_green;
+  a.image_blend=c_green;
   else
-    a._colour=c_red;
+    a.image_blend=c_red;
 </string>
           </argument>
         </arguments>

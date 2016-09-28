@@ -311,12 +311,6 @@ if gui_draw_sprite_clickable(spr_window_button_quick,0,xx+208,yy+counter*20+43,1
       instance_destroy();
     
       }
-   /*if inv_equip_armour(global.inventory_list[counter])=true {
-    refresh=true;
-    desc_text="";
-    desc_scroll=0;
-    selected=0;
-    }*/
    }
  }
 
@@ -465,12 +459,6 @@ if selected&gt;0 {
       instance_destroy();
     
       }
-    /*if inv_equip_armour(selected)=true {
-     inv_refresh();
-     desc_text="";
-     desc_scroll=0;
-     selected=0;
-     }*/
     } 
   }
  }

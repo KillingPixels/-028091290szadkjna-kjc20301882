@@ -7,6 +7,7 @@
   <NewExtensions>
     <extension index="0">extensions\Mercury-2D Worlds and Lighting</extension>
     <extension index="1">extensions\Turbo Print Parser</extension>
+    <extension index="2">extensions\N String Parser 2</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -244,8 +245,6 @@
         <script>scripts\screen_fade.gml</script>
         <script>scripts\screen_set_bloom.gml</script>
         <script>scripts\screen_set_bloom_override.gml</script>
-        <script>scripts\fade_trigger_scr.gml</script>
-        <script>scripts\player_died_scr.gml</script>
         <script>scripts\remove.gml</script>
         <script>scripts\random_dur.gml</script>
         <script>scripts\random_ammo.gml</script>
@@ -253,6 +252,7 @@
         <script>scripts\key_to_string.gml</script>
         <script>scripts\key_int.gml</script>
         <script>scripts\HG_nearest_light_dist.gml</script>
+        <script>scripts\TPP_define_local.gml</script>
         <script>scripts\execute_string_delayed.gml</script>
         <scripts name="Armours">
           <script>scripts\armour_get_speed.gml</script>
@@ -511,12 +511,15 @@
         <script>scripts\pfd_write.gml</script>
         <script>scripts\pfd_read.gml</script>
       </scripts>
-      <scripts name="Splats">
+      <scripts name="Splats / Decals">
         <script>scripts\spl_initialize.gml</script>
         <script>scripts\spl_free.gml</script>
+        <script>scripts\spl_toggle.gml</script>
         <script>scripts\spl_tick.gml</script>
-        <script>scripts\spl_draw_surface.gml</script>
-        <script>scripts\spl_draw_point.gml</script>
+        <script>scripts\spl_draw_system.gml</script>
+        <scripts name="Draw">
+          <script>scripts\spl_draw_point.gml</script>
+        </scripts>
       </scripts>
       <scripts name="Channel actions">
         <script>scripts\cha_start.gml</script>
@@ -853,7 +856,7 @@
         </scripts>
       </scripts>
     </scripts>
-    <scripts name="N String Parser v2_4">
+    <scripts name="N String Parser v2_5_0">
       <script>scripts\NSP_Documentation.gml</script>
       <script>scripts\NSP_initialize.gml</script>
       <script>scripts\NSP_free.gml</script>
@@ -864,12 +867,14 @@
       <script>scripts\NSP_execute_saved.gml</script>
       <script>scripts\NSP_evaluate_saved.gml</script>
       <script>scripts\NSP_free_saved.gml</script>
-      <scripts name="Underlying">
+      <scripts name="Main">
         <script>scripts\nsp_execute_master.gml</script>
         <script>scripts\nsp_execute_block.gml</script>
         <script>scripts\nsp_execute_line.gml</script>
         <script>scripts\nsp_execute_single.gml</script>
         <script>scripts\nsp_execute_script.gml</script>
+      </scripts>
+      <scripts name="Utility">
         <script>scripts\nsp_get_constant.gml</script>
         <script>scripts\nsp_convert_to_list.gml</script>
         <script>scripts\nsp_list_parameters.gml</script>
@@ -877,17 +882,25 @@
         <script>scripts\nsp_list_remove.gml</script>
         <script>scripts\nsp_build_grid.gml</script>
         <script>scripts\nsp_grid_shift.gml</script>
-        <script>scripts\nsp_list_string.gml</script>
+        <script>scripts\nsp_list_to_string.gml</script>
+      </scripts>
+      <scripts name="Evaluator">
         <script>scripts\nsp_evaluate_list.gml</script>
         <script>scripts\nsp_evaluate_single.gml</script>
         <script>scripts\nsp_evaluate_long.gml</script>
         <script>scripts\nsp_evaluate_special_word.gml</script>
+      </scripts>
+      <scripts name="Variable parser">
         <script>scripts\nsp_variable_set.gml</script>
         <script>scripts\nsp_variable_get.gml</script>
         <script>scripts\nsp_variable_global_set.gml</script>
         <script>scripts\nsp_variable_global_get.gml</script>
-        <script>scripts\nsp_dsm_set.gml</script>
-        <script>scripts\nsp_dsm_get.gml</script>
+        <scripts name="DSM">
+          <script>scripts\nsp_dsm_set.gml</script>
+          <script>scripts\nsp_dsm_get.gml</script>
+        </scripts>
+      </scripts>
+      <scripts name="Identifier">
         <script>scripts\nsp_is_special_word.gml</script>
         <script>scripts\nsp_is_string.gml</script>
         <script>scripts\nsp_is_number.gml</script>
@@ -895,20 +908,26 @@
         <script>scripts\nsp_is_asset.gml</script>
         <script>scripts\nsp_is_variable.gml</script>
         <script>scripts\nsp_is_dsm.gml</script>
-        <script>scripts\nsp_gm_nom.gml</script>
-        <script>scripts\nsp_src_token.gml</script>
-        <script>scripts\nsp_token_is_valid.gml</script>
+        <scripts name="Misc">
+          <script>scripts\nsp_gm_nom.gml</script>
+          <script>scripts\nsp_src_token.gml</script>
+          <script>scripts\nsp_token_is_valid.gml</script>
+        </scripts>
+      </scripts>
+      <scripts name="Calculator">
         <script>scripts\nsp_arithmetic_calculate.gml</script>
         <script>scripts\nsp_comparison_calculate.gml</script>
         <script>scripts\nsp_combination_calculate.gml</script>
         <script>scripts\nsp_is_equal.gml</script>
+      </scripts>
+      <scripts name="String format">
         <script>scripts\nsp_string_crop.gml</script>
         <script>scripts\nsp_string_crop_ext.gml</script>
         <script>scripts\nsp_string_find_last.gml</script>
         <script>scripts\nsp_string_force.gml</script>
       </scripts>
     </scripts>
-    <scripts name="Turbo Print Parser v1_0">
+    <scripts name="Turbo Print Parser v1_0_2">
       <script>scripts\TPP_Documentation.gml</script>
       <script>scripts\TPP_initialize.gml</script>
       <script>scripts\TPP_free.gml</script>
@@ -916,7 +935,6 @@
         <script>scripts\TPP_define_var.gml</script>
         <script>scripts\TPP_clear_definitions.gml</script>
         <script>scripts\TPP_define_defaults.gml</script>
-        <script>scripts\TPP_define_local.gml</script>
       </scripts>
       <scripts name="Text">
         <script>scripts\TPP_text_print.gml</script>
@@ -1120,8 +1138,8 @@
   <rooms name="rooms">
     <room>rooms\room_initialize</room>
     <room>rooms\room_menu</room>
-    <room>rooms\room_hospital</room>
     <room>rooms\room_demo</room>
+    <room>rooms\room_hospital</room>
     <room>rooms\room_cemetary</room>
     <room>rooms\room_forest_precapture</room>
     <room>rooms\room_HQ_mission_brief</room>

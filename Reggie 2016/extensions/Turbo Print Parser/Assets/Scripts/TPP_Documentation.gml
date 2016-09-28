@@ -1,4 +1,4 @@
-/* Turbo Print Parser v1.0 - Documentation
+/* Turbo Print Parser v1.0.2 - Documentation
 
 >>INITIALIZATION:
   To initialize the parser call TPP_initialize() before calling any other

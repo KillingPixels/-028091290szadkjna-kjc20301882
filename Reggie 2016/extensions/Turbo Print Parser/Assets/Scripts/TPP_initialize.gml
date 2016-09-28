@@ -24,6 +24,7 @@ enum TPP_LIST {
   font,
   linealign,
   maxheight,
+  def_font,
   def_width,
   def_sep,
   def_just

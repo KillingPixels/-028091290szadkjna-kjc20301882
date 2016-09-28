@@ -417,10 +417,12 @@ for (i=1; i<=string_length(work_str); i+=1) {
   if (word_w>=width) {
   
     //Break line, add to next line:
-    p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
-    if (sep==-1) v=line_h; else v=sep;
-    tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
-    tot_h=tot_h+v;
+    if (line_l<>0) {
+      p=min((width+pad-line_w)/(line_l),pad)*(line_w>width*jt);
+      if (sep==-1) v=line_h; else v=sep;
+      tpp_add_line_to_grid(g,line_s,line_w+line_l*p,v,p);
+      tot_h=tot_h+v;
+      }
               
     line_s=word_s;
     line_l=word_l;
@@ -519,6 +521,7 @@ switch (argument4) {
 
 l[|TPP_LIST.maxheight]=tot_h;
 
+l[|TPP_LIST.def_font]=fnt;
 l[|TPP_LIST.def_width]=width;
 l[|TPP_LIST.def_sep]=sep;
 l[|TPP_LIST.def_just]=pad;

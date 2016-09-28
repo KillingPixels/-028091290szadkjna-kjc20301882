@@ -69,9 +69,11 @@ global.sett_map=ds_map_create();
   sett_desc_to_last("The rate at which the letters appear in the textbox during conversations.");
  
  //Graphics:
- global.sett_graphics=9;
+ global.sett_graphics=10;
  sett_define_value("GUI Scale",SETT_TYPE.selection,SETT_GROUP.graphics,"100%","125%","150%","175%","200%");
   sett_desc_to_last("Determines size of the GUI elements.");
+ sett_define_value("Fullscreen",SETT_TYPE.toggle,SETT_GROUP.graphics,"Off","On");
+  sett_desc_to_last("::");
  sett_define_value("Info Box Opacity",SETT_TYPE.percent_scale,SETT_GROUP.graphics,0,100);
   sett_desc_to_last("Minimal opacity of the info box when it fades (when not in use).");
  sett_define_value("Frame skipping",SETT_TYPE.toggle,SETT_GROUP.graphics,"On","Off");

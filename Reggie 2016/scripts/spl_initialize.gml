@@ -12,4 +12,4 @@ global.SPLAT_TIMER=0;
 global.SPLAT_PREV_X=0;
 global.SPLAT_PREV_Y=0;
 
-
+global.SPLAT_ENABLED=1;

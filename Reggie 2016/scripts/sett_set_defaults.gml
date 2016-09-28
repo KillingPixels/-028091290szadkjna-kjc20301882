@@ -35,6 +35,7 @@ sett_set_value("Textbox Speed","Regular");
 
 //Graphics:
 sett_set_value("GUI Scale","100%");
+sett_set_value("Fullscreen","Off");
 sett_set_value("Info Box Opacity",20);
 sett_set_value("Frame skipping","On");
 sett_set_value("V-Sync","Off");
