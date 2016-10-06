@@ -6,6 +6,8 @@
   <datafiles number="1" name="datafiles"/>
   <NewExtensions>
     <extension index="0">extensions\Mercury-2D Worlds and Lighting</extension>
+    <extension index="1">extensions\Turbo Print Parser</extension>
+    <extension index="2">extensions\N String Parser 2</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -1025,10 +1027,10 @@
     <room>rooms\room_initialize</room>
     <room>rooms\room_menu</room>
     <room>rooms\room_demo</room>
-    <room>rooms\room_cemetary</room>
     <room>rooms\room_hospital</room>
-    <room>rooms\room_forest_precapture</room>
+    <room>rooms\room_cemetary</room>
     <room>rooms\room_HQ_mission_brief</room>
+    <room>rooms\room_forest_precapture</room>
   </rooms>
   <constants number="5">
     <constant name="rpi">pi/180</constant>
