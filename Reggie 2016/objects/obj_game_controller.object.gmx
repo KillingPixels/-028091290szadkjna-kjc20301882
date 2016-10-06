@@ -65,10 +65,13 @@ window_set_min_width(320*2);
 
 //Other:
 _mouseHudPos=0;
-_hudOffset=0;
+_hudOffset=1.5;
 _heartFrame=0;
-display_set_gui_maximise(gui_get_scale(),gui_get_scale(),0,0);
+//display_set_gui_maximise(gui_get_scale(),gui_get_scale(),0,0);
 _string="HG_world_lighting_set_ambient(-1,0.5,make_colour_rgb(255,255,255));";
+_reloadStatePrev=0;
+_roomGoto=room_menu;
+sett_update_settings();
 
 
 
@@ -132,13 +135,19 @@ if (global.sl_string&lt;&gt;"") {
 
  var name=global.sl_string;
  
+ //Basic initialization:
  game_initialize(0);
- pfd_initialise();
  
+ //Mercury &amp; Pathfinding:
  if instance_exists(obj_hg_controller)
   remove(obj_hg_controller);
  instance_create(0,0,obj_hg_controller);
  
+ if instance_exists(obj_pfd_controller)
+  remove(obj_pfd_controller);
+ instance_create(0,0,obj_pfd_controller);
+ 
+ //Systems &amp; resettables: 
  game_load_systems(name);
  
  with (propResettableParObj) {
@@ -192,7 +201,7 @@ or instance_exists(obj_gui_journal)=true
 or instance_exists(obj_gui_barter)=true
 or instance_exists(obj_gui_repair)=true
 or instance_exists(obj_gui_pause)=true
-or instance_exists(obj_textbox)=true
+//or instance_exists(obj_textbox)=true //Dialogues happen in scenes, not pauses
  _dc=true
  else
   _dc=false;
@@ -248,7 +257,8 @@ if (_dc=false) {
 
 if !(_dc) {
 
- if keyboard_check_pressed(userControls[KEYBOARD.pause])=true
+ if (keyboard_check_pressed(userControls[KEYBOARD.pause])==true and
+     !txt_obj_exists()) 
   instance_create(x,y,obj_gui_pause);
   
  }
@@ -363,10 +373,8 @@ if !game_paused() {
  if _infoA&gt;0 _infoA-=1;
 
  //Heart:
- heart_execute();
- 
- //Pathfinding:
- pfd_serve();
+ if (room&lt;&gt;room_hospital)
+   heart_execute();
  
  //Damage over Time:
  //dot_execute();
@@ -453,31 +461,6 @@ if !(global.scene_active) {
    _hudOffset+=0.05;
  
   }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Initialize pathfinding
-//show_message("Init Pfd");
-pfd_initialise();
 </string>
           </argument>
         </arguments>
@@ -629,7 +612,6 @@ if (surface_exists(auxSurf) and surface_exists(application_surface)) {
 switch (global.abs_end_action) begin
 
  case ABSEND.doNothing:
-   exit;
   break;
   
  case ABSEND.returnToMenu:   
@@ -638,10 +620,19 @@ switch (global.abs_end_action) begin
    room_goto(room_menu); 
   break;
   
+ case ABSEND.roomGoto:
+   //game_free();   
+   global.abs_end_action=0;
+   room_goto(_roomGoto);
+  break;
+  
  case ABSEND.endGame:
    game_free();
    game_end();
   break; 
+  
+ default:
+  break;
 
 end;
 </string>
@@ -669,6 +660,31 @@ end;
             <string>///Draw tooltip
 
 pnc_draw_tooltip(sett_get_value("Tooltip position")=="Fixed");
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="72">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Update splats
+
+spl_tick(view_xview,view_yview);
 </string>
           </argument>
         </arguments>
@@ -859,13 +875,14 @@ if instance_exists(weaponHoldingPar) {
  
  if ammo&gt;0 {
   gui_draw_bar(spr_reload_bar,1,xx+17,yy+34,1,true);
-  gui_draw_bar(spr_reload_bar,0,xx+17,yy+34,ammo/ammo_max,true);  
+  gui_draw_bar(spr_reload_bar,0,xx+17,yy+34,ammo/ammo_max,true);
   }
-  else if weaponHoldingPar.b_state=1 {
+  else if (weaponHoldingPar.b_state=1) {
    gui_draw_bar(spr_reload_bar,1,xx+17,yy+34,rld+1,true);
    gui_draw_bar(spr_reload_bar,0,xx+17,yy+34,rld,true);
-   }    
- 
+   cha_draw_channel_bar("Reloading...",rld);
+   }
+   
  gui_draw_bar(spr_dur_bar,0,xx+17,yy+81,dur/dur_max,true);
  
  }
@@ -1100,9 +1117,39 @@ draw_set_alpha(1);
 //This is needed because of the manual window resize feature.
 
 if (_windowW_1==_windowW_2 or _windowH_1==_windowH_2) and
-   (!keyboard_check_pressed(userControls[KEYBOARD.refresh])) exit;
+   (!keyboard_check_pressed(userControls[KEYBOARD.refresh])) {}
+   
+ else {
 
-gui_refresh();
+  gui_refresh();
+  
+  }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Splats &amp; other
+spl_draw_system(view_xview,view_yview);
+
+/*draw_set_alpha(0.35);
+mp_grid_draw(global.pfd_grid);
+draw_set_alpha(1);*/
 </string>
           </argument>
         </arguments>
@@ -1187,36 +1234,6 @@ if game_paused() exit;
 
 game_free();
 game_restart();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="17">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>var map=ds_map_create();
-
-ds_map_set(map,"Square",5);
-ds_map_set(map,"Square",7);
-
-show_message(map[?"Square"]);
-
-ds_map_destroy(map);
 </string>
           </argument>
         </arguments>

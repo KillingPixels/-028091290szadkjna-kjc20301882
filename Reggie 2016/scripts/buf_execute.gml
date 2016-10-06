@@ -21,20 +21,22 @@ if local_buff_counter=0 {
   ds_grid_sort(local_buff_grid,1,false);
  
   a=0;
-  for (i=0; i<ds_grid_height(local_buff_grid)-1; i+=1) begin
-   if (local_buff_grid[#1,i]<1)
-    buf_end_effect(local_buff_grid[#0,i])
+  for (i=0; i<ds_grid_height(local_buff_grid); i+=1) begin
+   if (local_buff_grid[#1,i]<1) {
+    buf_end_effect(local_buff_grid[#0,i]);    
+    }
     else
-     a=i+1;
+     a+=1;
      
   end;
-  
-  if a>0
-   ds_grid_resize(local_buff_grid,2,a)
-   else {
-   ds_grid_destroy(local_buff_grid);
-   local_buff_grid=ds_grid_create(2,0);
-   }
+   
+  if (a==0) {
+    ds_grid_destroy(local_buff_grid);
+    local_buff_grid=ds_grid_create(2,0);  
+    }
+    else {
+      ds_grid_resize(local_buff_grid,2,a);
+      }
 
   buf_calculate_modifiers();
  

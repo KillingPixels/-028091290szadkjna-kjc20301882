@@ -63,7 +63,8 @@ w=HG_world_create(ceil(room_width/cs),ceil(room_height/cs),cs,0,640,360,"Empty",
 
 if (sett_get_value("Dynamic Bloom")="On") {
 
- obj_game_controller.bloomRadius=0.1+clamp(20/HG_nearest_light_dist(obj_player.x,obj_player.y),0,0.3);
+ obj_game_controller.bloomRadius=0.1+clamp(20/HG_nearest_light_dist((global.player_obj_id).x,
+                                                                    (global.player_obj_id).y),0,0.3);
  
  }
  else obj_game_controller.bloomRadius=0.1;

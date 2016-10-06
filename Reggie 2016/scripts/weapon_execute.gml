@@ -195,6 +195,7 @@ if keyboard_check(userControls[KEYBOARD.reload])=true {
     if xammo>0 and s_reload<>-1 sound_play(s_reload); //"xammo>0" check was added because, in theory, the player
     if xammo>0 b_state=0;                             //could drop the ammo before the reload finishes
     if xammo>0 reloading=0;
+    if xammo>0 with (instance_create(0,0,obj_channel_bar_finished)) { _colour=c_green; }
     //STUB - Maybe notify the player that reloading is finished  
       
     }

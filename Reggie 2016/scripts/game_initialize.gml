@@ -7,6 +7,15 @@
 // STATIC: //
 //*********//
  
+enum GLOBAL {
+
+ precision=12,
+ view_width=640,
+ view_height=360,
+ pfd_size=8,
+
+ }
+
 enum KEYBOARD {
 
     left=0,
@@ -59,6 +68,7 @@ enum ABSEND {
 
  doNothing=0,
  returnToMenu,
+ roomGoto,
  endGame
 
  };
@@ -128,13 +138,17 @@ txt_initialize();
 ptc_initialize();
 pnc_initialize();
 
+spl_initialize();
+
 barter_initialise();
 heart_initialise();
 //sev_initialise();
 
 NSP_initialize();
+TPP_initialize();
+TPP_define_defaults();
+TPP_define_local();
 
 //Blur shader setup:
-//globalvar sha_gauss_sigma,sha_gauss_blurSize;
 global.sha_gauss_sigma = shader_get_uniform(sh_gauss,"sigma");
 global.sha_gauss_blurSize = shader_get_uniform(sh_gauss,"blurSize");

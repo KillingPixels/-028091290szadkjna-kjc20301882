@@ -64,15 +64,10 @@ enum PLAYER {
     topStamina=200,     // Maximum stamina the user can have
     staminaCPF=15,      // [10] Amount of stamina used per frame (so 60x a second)
     staminaRPF=5,       // [10] Amount of stamina regenerated per frame (so 60x a second)
-    staminaUFR=75       // Stamina used for each roll    
+    staminaUFR=75,      // Stamina used for each roll    
+    armourEqTime=180,   // Time (in steps) needed to equip / unequip armour
 
 }
-
-enum GLOBAL {
-
- precision=12
-
- }
 
 // Enemies: ---------------------------------------------------------------------------------------
 

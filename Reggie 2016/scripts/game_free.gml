@@ -16,7 +16,10 @@ inv_free();
 txt_free();
 ptc_free();
 
+spl_free();
+
 NSP_free(true);
+TPP_free();
 
 //PENDING:
   //heart_free();  -- probs not needed
@@ -42,12 +45,12 @@ with (bodyParObj) {
 var i=true,s,l;
 
 if (i=true)
- for (i=0; i<=1000; i+=1) {
+ for (i=0; i<=10000; i+=1) {
  
  if (ds_exists(i,ds_type_priority)) {show_message("Mem dealloc fail. ("+string(i)+") : Priority"); }
  if (ds_exists(i,ds_type_stack))    {show_message("Mem dealloc fail. ("+string(i)+") : Stack"); }
  if (ds_exists(i,ds_type_queue))    {show_message("Mem dealloc fail. ("+string(i)+") : Queue"); }
- if (ds_exists(i,ds_type_grid))     {show_message("Mem dealloc fail. ("+string(i)+") : Grid"); }
+ if (ds_exists(i,ds_type_grid))     {show_message("Mem dealloc fail. ("+string(i)+") : Grid, ["+string(ds_grid_width(i))+","+string(ds_grid_height(i))+"]"); }
  if (ds_exists(i,ds_type_list))     {show_message("Mem dealloc fail. ("+string(i)+") : List"); }
  if (ds_exists(i,ds_type_map))      {show_message("Mem dealloc fail. ("+string(i)+") : Map"); 
     /*s=ds_map_find_first(i);

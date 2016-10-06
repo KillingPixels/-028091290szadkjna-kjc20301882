@@ -38,6 +38,12 @@ _grounded=0;
 _climb=PLAYER.climb;
 _aircontrol=PLAYER.airControl/10;
 
+_maxspeed=PLAYER.topHorzSpeed;
+_acceleration=PLAYER.hcMovement/10;
+_jumpPower=PLAYER.jumpPower;
+_friction=1-PLAYER.friction/100;
+_gravity=PLAYER.gravity/10;
+
 //Movement Settings:
 _tapTimer=PLAYER.rollTapSpeed; // double-tap counter
 _rollTimer=0; // how long left to roll
@@ -88,40 +94,6 @@ _camy = y-view_hview[0]/2;
       </action>
     </event>
     <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///STUB - Hazard damage
-/*if (place_free_obj(x, y, harmfulPar, false) &gt; 0)
-{
-    if (_isInHarmful == 0)
-    {
-        screen_flash(c_red, 0.1);
-        _isInHarmful = HARMFUL_OBJ.flashDelay;
-        player_damage(HARMFUL_OBJ.damage, 0,0);
-    }
-    else
-        _isInHarmful--;
-}
-else
-    _isInHarmful = 0;*/
-</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>408</id>
@@ -223,7 +195,8 @@ if !(global.scene_active) begin
  
  if _health&lt;=0 {
   _health=0;
-  fade_trigger_scr(c_black,"player_died_scr",false);
+  //fade_trigger_scr(c_black,"player_died_scr",false);
+  show_message("You have died.");
   }
   else if _health&gt;PLAYER.topHealth
    _health=PLAYER.topHealth; 
@@ -449,7 +422,8 @@ if !(global.scene_active) begin //Regular movement
       _maxspeed=PLAYER.topHorzSpeed+3;
       _friction=1-PLAYER.friction/100;
       _acceleration=PLAYER.hMovement/10;
-      _stamina-=PLAYER.staminaCPF*0.1*_stamReq;
+      if (_hspeed&lt;&gt;0)
+       _stamina-=PLAYER.staminaCPF*0.1*_stamReq;
       _gravity=PLAYER.gravity/10;
       _stamCool=60;
       heart_cause_strain(HEART.sprint_strain/60);
@@ -737,7 +711,6 @@ if (__item &lt;&gt; "") and
             <string>///Draw self
 
 //draw_sprite_ext(mask_index,0,x,y,1,1,0,c_white,0.5);
-//mp_grid_draw(global.pfd_grid);
 
 draw_sprite_ext(spr_player_run,image_index,x,y,_imageXScale,ite_ext(_movementState&lt;&gt;0,0.5,1),0,c_white,1);
 
@@ -749,6 +722,30 @@ s+="#uop!";
 draw_text_ext(mouse_x,mouse_y,s,16,999);*/
  
 //draw_bbox(0,c_fuchsia);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Splat test
+if !mouse_check_button(mb_middle) exit;
+
+spl_draw_point(mouse_x-view_xview,mouse_y-view_yview);
 </string>
           </argument>
         </arguments>

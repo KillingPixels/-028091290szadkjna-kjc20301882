@@ -52,11 +52,18 @@ max_rows=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>//Update settings:
 if (room&lt;&gt;room_menu)
  sett_update_settings();
 
 sett_update_controls();
+
+//Write to INI:
+ini_open("Settings.ini");
+
+ini_write_string("SETTINGS","Settings",sett_write());
+
+ini_close();
 </string>
           </argument>
         </arguments>
@@ -285,7 +292,7 @@ for (i=0; i&lt;=9; i+=1) begin
    }
   
   draw_set_colour(c_black);  
-  draw_text(xx+12,yy+60+i*20,global.sett_grid[#0,list_array[i]]);
+  draw_text(xx+12,yy+62+i*20,global.sett_grid[#0,list_array[i]]);
   
   if mode&lt;&gt;0
    draw_text(xx+142,yy+61+i*20,force_string(sett_get_value(global.sett_grid[#0,list_array[i]])))

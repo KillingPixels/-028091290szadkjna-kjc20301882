@@ -39,7 +39,7 @@ for (i=1; i<=choices; i+=1) begin
  txt_map_set("path_s_"+string(i)+suffix,stage+1);
  txt_map_set("path_b_"+string(i)+suffix, txt_map_get("branches_s"+string(stage+1)) +i );
  
- if string_pos("[End]",argument[2+i])>0 e+=1;
+ if string_pos("{End}",argument[2+i])>0 e+=1;
  
 end;
 

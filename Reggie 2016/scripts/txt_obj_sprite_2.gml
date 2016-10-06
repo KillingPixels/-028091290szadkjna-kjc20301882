@@ -1,4 +1,4 @@
-///txt_obj_sprite_1(Sprite Index)
+///txt_obj_sprite_2(Sprite Index)
 /*
 
 */
