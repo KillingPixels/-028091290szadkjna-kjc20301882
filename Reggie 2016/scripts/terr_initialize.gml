@@ -17,6 +17,11 @@ t=HG_type_create("BlackArea");
   HG_type_set_visual(t,-1,1,-5,1,c_black);
   HG_type_set_tile_n(t,bg_tileset_default,34,0,1,1);
   
+t=HG_type_create("DarkRock");
+  HG_type_set_shape(t,HG_SHAPE.full);
+  HG_type_set_visual(t,-1,1,-5,1,c_black);
+  HG_type_set_tile_n(t,bg_tileset_default,34,1,1,1);
+  
 //*** BUILDINGS: ***
 t=HG_type_create("BrickWall");
   HG_type_set_shape(t,HG_SHAPE.full);

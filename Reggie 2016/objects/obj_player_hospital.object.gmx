@@ -3,9 +3,9 @@
   <spriteName>spr_player_bug</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-3</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>bodyParObj</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -28,6 +28,7 @@
             <string>///Initialize variables
 
 global.player_obj_id=id;
+instance_create(x,y,obj_camera);
 
 /*
 
@@ -67,8 +68,31 @@ _vSpeedTreshold=12;
 buf_instance_init();
 
 //Other:
-
+locked=true;
 image_speed=1/6;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>buf_instance_free();
 </string>
           </argument>
         </arguments>
@@ -96,7 +120,7 @@ var movdir,__left,__right;
 
 if game_paused() exit;
 
-if !game_in_scene() {
+if (locked==false) {
 
  movdir=(keyboard_check(userControls[KEYBOARD.right])-keyboard_check(userControls[KEYBOARD.left]));
  __left=(movdir==-1);

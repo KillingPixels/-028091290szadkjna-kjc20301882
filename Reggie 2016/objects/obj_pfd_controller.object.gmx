@@ -52,10 +52,7 @@
 
 if !game_paused() {
  
-  //Pathfinding:
-  pfd_serve();
- 
- 
+  pfd_serve();  
  
   }
 </string>
@@ -63,7 +60,7 @@ if !game_paused() {
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="17">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -80,37 +77,7 @@ if !game_paused() {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*var i,t,w,h,g,s;
-
-var time1=get_timer();
-
-if !keyboard_check(vk_shift) {
-
-  w=ceil(room_width/GLOBAL.pfd_size);
-  h=ceil(room_height/GLOBAL.pfd_size);
- 
-  s=mp_grid_to_str(global.pfd_grid,w,h);
-  
-  ini_open("SAVETEST.ini");
-  ini_write_string("TEST","STRING",s);
-  ini_close();
-
-  }
-  else {
-  
-    ini_open("SAVETEST.ini");
-    s=ini_read_string("TEST","STRING","");
-    ini_close();
-  
-    mp_grid_destroy(global.pfd_grid);
-    global.pfd_grid=str_to_mp_grid(s,GLOBAL.pfd_size,GLOBAL.pfd_size);
-    
-    show_message("Loading done!");
-  
-    }
-
-var time2=get_timer();
-//show_message("Execution time: "+string(time2-time1)+"ms.");
+            <string>//This is empty but needed.
 </string>
           </argument>
         </arguments>

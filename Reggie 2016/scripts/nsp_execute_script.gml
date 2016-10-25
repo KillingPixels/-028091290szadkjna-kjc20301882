@@ -23,27 +23,54 @@ if is_array(argument1) {
 switch (argument0) begin
 
  case "show_message":
-   show_message(argument1[0]);
-   return 0;
+  show_message(argument1[0]);
+  return 0;
   
  case "instance_create":
-   return instance_create(argument1[0],argument1[1],argument1[2]);
+  return instance_create(argument1[0],argument1[1],argument1[2]);
   
  case "instance_destroy":
-   instance_destroy();
-   return 0;
+  instance_destroy();
+  return 0;
   
  case "game_restart":
-   game_restart();
-   return 0;
+  game_restart();
+  return 0;
   
  case "room_goto_next":
-   room_goto_next();
-   return 0;
-
+  room_goto_next();
+  return 0;
+  
+ case "ds_list_add":
+  ds_list_add(argument1[0],argument1[1]);
+  return 0;
+  
+ case "ds_list_create":
+  return ds_list_create();
+  
+ case "ds_list_find_value":
+  return ds_list_find_value(argument1[0],argument1[1]);
+  
+ case "ds_list_destroy":
+  ds_list_destroy(argument1[0]);
+  return 0;
+  
+ case "instance_nearest":
+  return instance_nearest(argument1[0],argument1[1],argument1[2]);
+  
+ case "sqr":
+  return sqr(argument1[0]);
+  
+ case "sqrt":
+  return sqrt(argument1[0]);
+  
  case "make_colour_rgb":
    return make_colour_rgb(argument1[0],argument1[1],argument1[2]);
   
+ case "show_debug_overlay":
+   show_debug_overlay(argument1[0]);
+   return 0;
+
  default:
    if asset_get_type(argument0)<>asset_script {
     NSP_notify("SCRIPT: nsp_execute_script. ERROR: Script not supported ( "+argument0+" ).");

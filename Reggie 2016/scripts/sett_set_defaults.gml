@@ -31,9 +31,11 @@ sett_set_value("Refresh display",ord("V"));
 
 //Gameplay:
 sett_set_value("Auto Equip","Weapons");
+sett_set_value("Textbox Speed","Regular");
 
 //Graphics:
-sett_set_value("GUI Scale","125%");
+sett_set_value("GUI Scale","100%");
+sett_set_value("Fullscreen","Off");
 sett_set_value("Info Box Opacity",20);
 sett_set_value("Frame skipping","On");
 sett_set_value("V-Sync","Off");
@@ -41,8 +43,10 @@ sett_set_value("Anti-Alias","x0");
 sett_set_value("Interpolation","Off");
 sett_set_value("Smooth lighting","Off");
 sett_set_value("Dynamic Bloom","On");
+sett_set_value("Dynamic Decals","On");
 
 //Sound:
+sett_set_value("Reset to Defaults","0");
 sett_set_value("Master volume",100);
 
 //Misc. (Other):

@@ -5,7 +5,7 @@ _granadeRange=300;
 _granadeDamage=12;
 _granadeKnock=5;
 _granadeExpScale=1.5;
-_granadeLength=5; // custom
+_granadeLength=6; // custom
 
 _granadeElevation=0.3;
 _granadeGravity=1;
