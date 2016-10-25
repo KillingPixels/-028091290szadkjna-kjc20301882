@@ -181,7 +181,7 @@ if _attackTimer&gt;-_attackSpeed
         {
 
 
-        if(_granadeSpeed=0)_granadeSpeed=1;
+        if(_granadeSpeed=0)_granadeSpeed=1 ;
 
         _scriptStep=0;
         _aiState=AI_STATE.hide;
@@ -331,7 +331,7 @@ if ((_aiState=AI_STATE.hunt) or (_aiState=AI_STATE.ret) or (_aiState=AI_STATE.hi
       //Start attack animation: 
       _attackTimer=_granadeLength;
       }
-     if distance_to_object(_target)&lt;=_attackRange 
+     if (distance_to_object(_target)&lt;=_attackRange) and (_precisionState=1)
      {
       //Start attack animation: 
       _attackTimer=_attackLength;
