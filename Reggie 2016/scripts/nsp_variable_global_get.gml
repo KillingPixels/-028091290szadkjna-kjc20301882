@@ -36,6 +36,10 @@ switch (work_str) begin
    return global.state;
   break;
   
+ case "room_speed":
+   return room_speed;
+  break;
+  
  default:
    NSP_notify("SCRIPT: nsp_variable_global_get. ERROR: Variable not supported ("+argument0+").");
    return nspToken[NSP_TOK.abort];

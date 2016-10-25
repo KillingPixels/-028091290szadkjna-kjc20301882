@@ -742,10 +742,12 @@ draw_text_ext(mouse_x,mouse_y,s,16,999);*/
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Splat test
-if !mouse_check_button(mb_middle) exit;
+            <string>///MMB Testing
+if !mouse_check_button_pressed(mb_middle) exit;
 
-spl_draw_point(mouse_x-view_xview,mouse_y-view_yview);
+//spl_draw_point(mouse_x-view_xview,mouse_y-view_yview);
+
+bubble_text_create(mouse_x,mouse_y,"sample text abCdEfG bla bla bla etc,,. aosj",120,c_white,0,0,0);
 </string>
           </argument>
         </arguments>

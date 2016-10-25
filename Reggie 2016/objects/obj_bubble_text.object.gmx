@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-98</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,18 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// OBJECT: obj_main_menu
-// Initializes variables and systems for the main menu.
-// Not player-interactible (see obj_mm_button).*
-// *-currently is for testing.
+            <string>MAXWIDTH=200;
+FONT=f_windows;
+SEP=12;
+PAD=8;
 
-global.game_name="TESTRUN"; //PEP
-game_initialize(1);
-sett_initialize();
-gui_set_scale(1.25);
-application_surface_draw_enable(true);
-display_set_gui_maximise(gui_get_scale(),gui_get_scale(),0,0);
-window_set_fullscreen(sett_get_value("Fullscreen")=="On");
+_text="";
+_duration=0;
+
+_colour=c_white;
+_complex=false;
+
+_w=0;
+_h=0;
+//x=0;
+//y=0;
+
+_obj=noone;
+_follow=false;
+_yoffset=0;
 </string>
           </argument>
         </arguments>
@@ -59,9 +66,10 @@ window_set_fullscreen(sett_get_value("Fullscreen")=="On");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!instance_exists(obj_gui_settings))
-  if (window_get_fullscreen() &lt;&gt; (sett_get_value("Fullscreen")=="On"))
-    window_set_fullscreen(sett_get_value("Fullscreen")=="On");
+            <string>_duration-=1;
+
+if (_duration&lt;=0) 
+  instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -84,42 +92,59 @@ window_set_fullscreen(sett_get_value("Fullscreen")=="On");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-draw_background(bg_poster,0,0);
+            <string>var b,dx,dy;
 
-draw_set_valign(fa_top);
-draw_set_halign(fa_left);
+//Set up coordinates:
+if (_follow==true) {
 
-draw_set_colour(c_black);
+  if (_obj&lt;&gt;noone and !instance_exists(_obj)) {
+    instance_destroy();
+    exit;
+    }
 
-draw_text(x,y,"MAIN MENU:#Press 1 to play");
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="49">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>
-sett_free();
+  x=_obj.x;
+  y=_obj.y+_yoffset;
+    
+  }
 
-game_initialize(0);
-room_goto_next();
+dx=x-_w/2;
+dy=y-_h/2;
+
+if (dx&lt;view_xview+PAD)
+  dx=view_xview+PAD;
+else if (dx+_w+3*PAD&gt;view_xview+view_wview)
+  dx=view_xview+view_wview-_w-3*PAD;
+  
+if (dy&lt;view_yview+PAD)
+  dy=view_yview+PAD;
+else if (dy+_h+3*PAD&gt;view_yview+view_hview)
+  dy=view_yview+view_hview-_h-3*PAD;
+  
+//Draw: (TEMP)
+draw_set_colour(c_navy);
+draw_set_alpha(0.7);
+draw_rectangle(dx,dy,dx+_w+2*PAD,dy+_h+2*PAD,false);
+draw_set_colour(c_white);
+draw_rectangle(dx,dy,dx+_w+2*PAD,dy+_h+2*PAD,true);
+
+if (_complex==false) {
+  
+  draw_set_colour(_colour);
+  draw_set_alpha(1);
+  draw_set_font(FONT);
+  draw_text_ext(dx+PAD,dy+PAD,_text,SEP,MAXWIDTH);
+  
+  }
+else {
+
+  TPP_text_print(dx+PAD,dy+PAD,_text,_colour,1,FONT,fa_bottom,-1);
+
+  }
+  
+  
+  
+  
+  
 </string>
           </argument>
         </arguments>

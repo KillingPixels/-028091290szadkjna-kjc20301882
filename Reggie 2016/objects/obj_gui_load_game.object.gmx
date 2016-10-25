@@ -219,6 +219,7 @@ if (selected&lt;&gt;"") {
   switch (room) begin
   
    case room_menu:
+     remove(obj_main_menu);
      ds_list_destroy(dirs);
      sett_free();
      
