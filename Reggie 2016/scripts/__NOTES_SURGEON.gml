@@ -18,6 +18,7 @@
    -105 GUI window objects
    -100 Main game controller*
    -099 Channel bar
+   -098 Bubble text
    ...
    -001 Player object
    ...
@@ -38,7 +39,6 @@
   Sound (sfx system)
   
   -Polish:
-   Fix finished channel bar colour
    Rewrite screen_shake
    
   -AI commands:

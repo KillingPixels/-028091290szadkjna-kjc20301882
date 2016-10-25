@@ -474,11 +474,11 @@ switch (_aiState) begin
      _tarX=_guardBody.x; 
      _tarY=_guardBody.y;
      }
-   if point_distance(x,y,_tarX,_tarY)&gt;_width
-    _moveMode=1
+   if (point_distance(x,y,_tarX,_tarY)&gt;_width+_guardRange)
+    _moveMode=1;
     else {
-     _moveMode=-1;
-     _aiState=AI_STATE.idle;
+     _moveMode=0;
+     //_aiState=AI_STATE.idle;
      }
    //Engage in combat if needed:
    ai_engage(40,_viewRange,_playerBias);
@@ -786,7 +786,7 @@ if _scriptStep&lt;&gt;0
 /*
 Just move inertially.
 */
-if _moveMode=0 begin
+if _moveMode==0 begin
 
  movement_execute(0,0,0,0,4);
 
@@ -817,7 +817,7 @@ Move towards target.
 */
 var __left,__right,__down,__jump,__grounded,__ceiling,__sign;
 
-if _moveMode=1 begin
+if _moveMode==1 begin
 
 //Deal with trackers &amp; set left/right controls:
 if point_distance(x,y,_tarX,_tarY)&lt;32 {
@@ -985,7 +985,7 @@ Move away from the target.
 */
 var __left,__right,__down,__jump,__grounded,__ceiling,__sign;
 
-if _moveMode=2 begin
+if _moveMode==2 begin
 
 //Deal with trackers:
 if instance_exists(tracker) &amp;&amp; tracker&gt;0 {
