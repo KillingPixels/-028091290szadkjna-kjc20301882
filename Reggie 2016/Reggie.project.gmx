@@ -144,6 +144,7 @@
       <sprite>sprites\spr_hospital_door</sprite>
       <sprite>sprites\spr_hospital_bed</sprite>
       <sprite>sprites\obj_window</sprite>
+      <sprite>sprites\spr_gravekeepers_home</sprite>
     </sprites>
     <sprites name="Bodies">
       <sprite>sprites\spr_player_run</sprite>
@@ -154,6 +155,7 @@
       <sprite>sprites\spr_enemy_sct</sprite>
       <sprite>sprites\spr_enemy_turta</sprite>
       <sprite>sprites\spr_primal_basic</sprite>
+      <sprite>sprites\spr_gravekeeper</sprite>
       <sprites name="Default">
         <sprite>sprites\spr_enemy_brain</sprite>
         <sprite>sprites\spr_enemy_robocop</sprite>
@@ -245,6 +247,7 @@
         <script>scripts\screen_fade.gml</script>
         <script>scripts\screen_set_bloom.gml</script>
         <script>scripts\screen_set_bloom_override.gml</script>
+        <script>scripts\bubble_text_create.gml</script>
         <script>scripts\remove.gml</script>
         <script>scripts\random_dur.gml</script>
         <script>scripts\random_ammo.gml</script>
@@ -602,10 +605,12 @@
         </scripts>
         <scripts name="Global Human">
           <script>scripts\set_behavior_values_human1.gml</script>
+          <script>scripts\set_behavior_values_raskal.gml</script>
         </scripts>
         <scripts name="Specific">
           <script>scripts\enemy_bb_step.gml</script>
           <script>scripts\bh_level1_script0.gml</script>
+          <script>scripts\bh_ceme_raskal.gml</script>
         </scripts>
       </scripts>
       <scripts name="Weapons _Player_">
@@ -1015,6 +1020,7 @@
         <object>objects\obj_channel_bar_finished</object>
         <object>objects\obj_action_delayed</object>
         <object>objects\obj_load_fade</object>
+        <object>objects\obj_bubble_text</object>
       </objects>
     </objects>
     <objects name="Interface">
@@ -1042,7 +1048,7 @@
         <object>objects\obj_main_menu</object>
         <object>objects\obj_mm_button</object>
       </objects>
-      <objects name="Temp">
+      <objects name="Other">
         <object>objects\obj_vendor_template</object>
         <object>objects\obj_tom</object>
       </objects>
@@ -1132,15 +1138,20 @@
           <object>objects\obj_hospital_doctor</object>
           <object>objects\obj_hospital_window</object>
         </objects>
+        <objects name="Cemetary">
+          <object>objects\obj_ceme_raskal</object>
+          <object>objects\obj_ceme_gravekeepers_home</object>
+          <object>objects\obj_ceme_gravekeeper</object>
+        </objects>
       </objects>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_initialize</room>
     <room>rooms\room_menu</room>
-    <room>rooms\room_demo</room>
-    <room>rooms\room_hospital</room>
     <room>rooms\room_cemetary</room>
+    <room>rooms\room_hospital</room>
+    <room>rooms\room_demo</room>
     <room>rooms\room_forest_precapture</room>
     <room>rooms\room_HQ_mission_brief</room>
   </rooms>

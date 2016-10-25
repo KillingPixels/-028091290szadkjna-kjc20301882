@@ -16,7 +16,7 @@ a=0;
 c=0;
 with (bodyParObj) {
 
- if (_group=other._group and id<>other.id) {
+ if (_group=other._group and id<>other.id and object_index<>obj_player /*<-STUB*/) {
  
   if (_morale>MORALE.flee and point_distance(x,y,other.x,other.y)<640
       and true /*LoS*/) {
